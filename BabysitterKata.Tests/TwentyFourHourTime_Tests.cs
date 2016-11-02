@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BabysitterKata.Tests
 {
-    public class Class1
+    public class TwentyFourHourTime_Tests
     {
     }
 }
