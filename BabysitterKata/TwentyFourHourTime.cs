@@ -16,21 +16,28 @@ namespace BabysitterKata
 
         public TwentyFourHourTime(int hours, int minutes)
         {
-            if (hours >= 0 && hours < 24)
+            if(ValidateMinuteValue(minutes) && ValidateHourValue(hours))
             {
                 _hours = hours;
-            }else
-            {
-                throw new ArgumentOutOfRangeException("Hours entered must be 0-23. Please try again.");
-            }
-
-            if (minutes >= 0 && minutes < 60)
-            {
                 _minutes = minutes;
             }else
             {
-                throw new ArgumentOutOfRangeException("Minutes entered must be 0-59. Please try again.");
+                throw new ArgumentOutOfRangeException("Arguments are outside acceptable range.");
             }
+        }
+
+        private bool ValidateMinuteValue(int minutes)
+        {
+            if (minutes < 60 && minutes >= 0)
+                return true;
+            return false;
+        }
+
+        private bool ValidateHourValue(int hours)
+        {
+            if (hours < 24 && hours >= 0)
+                return true;
+            return false;
         }
     }
 }
