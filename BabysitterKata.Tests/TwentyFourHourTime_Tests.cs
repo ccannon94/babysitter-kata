@@ -15,7 +15,7 @@ namespace BabysitterKata.Tests
         [TestCase(4, 15)]
         [TestCase(15, 0)]
         [TestCase(23, 32)]
-        public void TwentyFourHourTime_HoursInitializeProperly(int hours, int minutes)
+        public void TwentyFourHourTime_GivenValidTime_HoursInitializeProperly(int hours, int minutes)
         {
             TwentyFourHourTime testTime = new TwentyFourHourTime(hours, minutes);
             Assert.That(testTime.Hours, Is.EqualTo(hours));
@@ -26,10 +26,22 @@ namespace BabysitterKata.Tests
         [TestCase(5, 42)]
         [TestCase(17, 0)]
         [TestCase(3, 36)]
-        public void TwentyFourHourTime_MinutesInitializeProperly(int hours, int minutes)
+        public void TwentyFourHourTime_GivenValidTime_MinutesInitializeProperly(int hours, int minutes)
         {
             TwentyFourHourTime testTime = new TwentyFourHourTime(hours, minutes);
             Assert.That(testTime.Minutes, Is.EqualTo(minutes));
+        }
+
+        [TestCase(24, 14)]
+        [TestCase(52, 36)]
+        [TestCase(0, 72)]
+        [TestCase(3, 60)]
+        [TestCase(-1, 42)]
+        [TestCase(3, -14)]
+        [TestCase(9, 940)]
+        public void TwentyFourHourTime_GivenInvalidTime_ThrowsArgumentOutOfRangeException(int hours, int minutes)
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(delegate { new TwentyFourHourTime(hours, minutes); });
         }
     }
 }
