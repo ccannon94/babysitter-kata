@@ -51,6 +51,12 @@
     <Compile Include="TwentyFourHourTime_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BabysitterKata\BabysitterKata.csproj">
+      <Project>{774d23c0-1120-4910-9069-203a320fbcad}</Project>
+      <Name>BabysitterKata</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
