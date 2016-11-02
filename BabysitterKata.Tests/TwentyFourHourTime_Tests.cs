@@ -20,5 +20,16 @@ namespace BabysitterKata.Tests
             TwentyFourHourTime testTime = new TwentyFourHourTime(hours, minutes);
             Assert.That(testTime.Hours, Is.EqualTo(hours));
         }
+
+        [TestCase(14, 32)]
+        [TestCase(12, 13)]
+        [TestCase(5, 42)]
+        [TestCase(17, 0)]
+        [TestCase(3, 36)]
+        public void TwentyFourHourTime_MinutesInitializeProperly(int hours, int minutes)
+        {
+            TwentyFourHourTime testTime = new TwentyFourHourTime(hours, minutes);
+            Assert.That(testTime.Minutes, Is.EqualTo(minutes));
+        }
     }
 }
