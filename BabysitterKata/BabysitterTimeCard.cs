@@ -16,8 +16,10 @@ namespace BabysitterKata
 
         public BabysitterTimeCard(TwentyFourHourTime startTime, TwentyFourHourTime endTime)
         {
-            _startTime = startTime;
-            _endTime = endTime;
+            if (StartTimeIsValid(startTime))
+                _startTime = startTime;
+            if (EndTimeIsValid(endTime))
+                _endTime = endTime;
         }
 
         public double CalculateTotalTime()
@@ -25,6 +27,22 @@ namespace BabysitterKata
             double hours = _endTime.Hours - _startTime.Hours;
             double minutes = _endTime.Minutes - _startTime.Minutes;
             return hours + minutes / 60;
+        }
+
+        private bool StartTimeIsValid(TwentyFourHourTime startTime)
+        {
+            if (startTime.Hours > 16 || startTime.Hours < 4)
+                return true;
+            throw new ArgumentOutOfRangeException("Babysitter cannot start work before 5:00PM");
+            return false;
+        }
+
+        private bool EndTimeIsValid(TwentyFourHourTime endTime)
+        {
+            if ((endTime.Hours == 4 && endTime.Minutes == 0) || (endTime.Hours < 4) || (endTime.Hours > StartTime.Hours && endTime.Hours < 24) || (endTime.Hours == StartTime.Hours && endTime.Minutes > StartTime.Minutes))
+                return true;
+            throw new ArgumentOutOfRangeException("Babysitters cannot work after 4:00AM");
+            return false;
         }
     }
 }

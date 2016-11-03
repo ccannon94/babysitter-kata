@@ -24,5 +24,14 @@ namespace BabysitterKata.Tests
 
             Assert.AreEqual((endTime.Hours - startTime.Hours) + (((double)endTime.Minutes - (double)startTime.Minutes)/60), timeCard.CalculateTotalTime());
         }
+
+        [TestCase(14, 32, 22, 15)]
+        public void BabySitterTimeCard_GivenStartTimeBefore5PM_ThrowsArgumentOutOfRangeException(int startTimeHours, int startTimeMinutes, int endTimeHours, int endTimeMinutes)
+        {
+            TwentyFourHourTime startTime = new TwentyFourHourTime(startTimeHours, startTimeMinutes);
+            TwentyFourHourTime endTime = new TwentyFourHourTime(endTimeHours, endTimeMinutes);
+
+            Assert.Throws<ArgumentOutOfRangeException>(delegate { new BabysitterTimeCard(startTime, endTime); });
+        }
     }
 }
