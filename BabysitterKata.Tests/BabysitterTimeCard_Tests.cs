@@ -18,7 +18,7 @@ namespace BabysitterKata.Tests
 
             BabysitterTimeCard timeCard = new BabysitterTimeCard(startTime, endTime);
 
-            Assert.AreEqual((endTime.Hours - startTime.Hours) + ((endTime.Hours - startTime.Hours)/60), timeCard.CalculateTotalTime());
+            Assert.AreEqual((endTime.Hours - startTime.Hours) + (((double)endTime.Minutes - (double)startTime.Minutes)/60), timeCard.CalculateTotalTime());
         }
     }
 }
