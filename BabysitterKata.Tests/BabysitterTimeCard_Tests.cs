@@ -10,10 +10,7 @@ namespace BabysitterKata.Tests
 {
     class BabysitterTimeCard_Tests
     {
-        [TestCase(12, 15, 0, 0)]
-        [TestCase(16, 47, 13, 4)]
         [TestCase(0, 12, 15, 42)]
-        [TestCase(7, 15, 16, 32)]
         [TestCase(19, 15, 22, 32)]
         public void BabysitterTimeCard_GivenTwoValidTime_CalculatesTotalTime(int startTimeHours, int startTimeMinutes, int endTimeHours, int endTimeMinutes)
         {
