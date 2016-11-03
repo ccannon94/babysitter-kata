@@ -10,9 +10,14 @@ namespace BabysitterKata.Tests
 {
     class BabysitterTimeCard_Tests
     {
-        public void BabysitterTimeCard_GivenTwoValidTime_CalculatesTotalTime(TwentyFourHourTime startTime, TwentyFourHourTime endTime)
+        [TestCase(19, 15, 22, 32)]
+        public void BabysitterTimeCard_GivenTwoValidTime_CalculatesTotalTime(int startTimeHours, int startTimeMinutes, int endTimeHours, int endTimeMinutes)
         {
+            TwentyFourHourTime startTime = new TwentyFourHourTime(startTimeHours, startTimeMinutes);
+            TwentyFourHourTime endTime = new TwentyFourHourTime(endTimeHours, endTimeMinutes);
+
             BabysitterTimeCard timeCard = new BabysitterTimeCard(startTime, endTime);
+
             Assert.AreEqual((endTime.Hours - startTime.Hours) + ((endTime.Hours - startTime.Hours)/60), timeCard.CalculateTotalTime());
         }
     }
