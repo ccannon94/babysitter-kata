@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace BabysitterKata
 {
+    /// <summary>
+    /// A representation of time in 24 hour clock format
+    /// Valid times range from 0000 to 2359.
+    /// </summary>
     public class TwentyFourHourTime
     {
         private const int MIN_HOURS_VALUE = 0;
@@ -15,9 +19,26 @@ namespace BabysitterKata
         private int _hours;
         private int _minutes;
 
+        /// <summary>
+        /// The number of hours since midnight.
+        /// </summary>
         public int Hours { get{ return _hours; } }
+        /// <summary>
+        /// The number of minutes since the last hour.
+        /// </summary>
         public int Minutes { get { return _minutes; } }
 
+        /// <summary>
+        /// Creates a TwentyFourHourTime.
+        /// </summary>
+        /// <param name="hours">
+        /// The number of hours since midnight.
+        /// Valid Range: 0-23
+        /// </param>
+        /// <param name="minutes">
+        /// The number of minutes since the last turn of the hour.
+        /// Valid Range: 0-59
+        /// </param>
         public TwentyFourHourTime(int hours, int minutes)
         {
             if(ValidateMinuteValue(minutes) && ValidateHourValue(hours))
