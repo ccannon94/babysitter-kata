@@ -10,7 +10,7 @@ namespace BabysitterKata
     /// A representation of time in 24 hour clock format
     /// Valid times range from 0000 to 2359.
     /// </summary>
-    public class TwentyFourHourTime
+    public class TwentyFourHourTime : IComparable, IComparable<TwentyFourHourTime>
     {
         private const int MIN_HOURS_VALUE = 0;
         private const int MIN_MINUTES_VALUE = 0;
@@ -63,6 +63,22 @@ namespace BabysitterKata
             if (hours <= MAX_HOURS_VALUE && hours >= MIN_HOURS_VALUE)
                 return true;
             return false;
+        }
+
+        public int CompareTo(object obj)
+        {
+            obj = (TwentyFourHourTime)obj;
+            if (obj != null)
+                return this.CompareTo(obj);
+            //Objects of TwentyFourHourTime should always be greater than other objects
+            return 1;
+        }
+
+        public int CompareTo(TwentyFourHourTime other)
+        {
+            if (this.Hours == other.Hours)
+                return this.Minutes.CompareTo(other.Minutes);
+            return this.Hours.CompareTo(other.Minutes);
         }
     }
 }
