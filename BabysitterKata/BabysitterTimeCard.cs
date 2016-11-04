@@ -8,6 +8,9 @@ namespace BabysitterKata
 {
     public class BabysitterTimeCard
     {
+        private TwentyFourHourTime EARLIEST_START_TIME = new TwentyFourHourTime(17, 0);
+        private TwentyFourHourTime MIDNIGHT = new TwentyFourHourTime(0, 0);
+        private TwentyFourHourTime LATEST_END_TIME = new TwentyFourHourTime(4, 0);
         private TwentyFourHourTime _startTime;
         private TwentyFourHourTime _endTime;
 
@@ -31,7 +34,7 @@ namespace BabysitterKata
 
         private bool StartTimeIsValid(TwentyFourHourTime startTime)
         {
-            if (startTime.Hours > 16 || startTime.Hours < 4)
+            if (startTime.CompareTo(EARLIEST_START_TIME) == 1 || startTime.CompareTo(LATEST_END_TIME) == -1)
                 return true;
             throw new ArgumentOutOfRangeException("Babysitter cannot start work before 5:00PM");
             return false;
@@ -39,7 +42,7 @@ namespace BabysitterKata
 
         private bool EndTimeIsValid(TwentyFourHourTime endTime)
         {
-            if ((endTime.Hours == 4 && endTime.Minutes == 0) || (endTime.Hours < 4) || (endTime.Hours > StartTime.Hours && endTime.Hours < 24) || (endTime.Hours == StartTime.Hours && endTime.Minutes > StartTime.Minutes))
+            if (endTime.CompareTo(LATEST_END_TIME) == -1 || endTime.Equals(LATEST_END_TIME) || (endTime.CompareTo(StartTime) == 1 && endTime.CompareTo(MIDNIGHT) == -1))
                 return true;
             throw new ArgumentOutOfRangeException("Babysitters cannot work after 4:00AM");
             return false;
