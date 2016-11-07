@@ -78,7 +78,7 @@ namespace BabysitterKata
         {
             if (this.Hours == other.Hours)
                 return this.Minutes.CompareTo(other.Minutes);
-            return this.Hours.CompareTo(other.Minutes);
+            return this.Hours.CompareTo(other.Hours);
         }
     }
 }

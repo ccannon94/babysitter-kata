@@ -42,7 +42,7 @@ namespace BabysitterKata
 
         private bool EndTimeIsValid(TwentyFourHourTime endTime)
         {
-            if (endTime.CompareTo(LATEST_END_TIME) < 0 || endTime.Equals(LATEST_END_TIME) || (endTime.CompareTo(StartTime) > 0 && endTime.CompareTo(MIDNIGHT) < 0))
+            if (endTime.CompareTo(LATEST_END_TIME) < 0 || endTime.Equals(LATEST_END_TIME) || endTime.CompareTo(StartTime) > 0)
                 return true;
             throw new ArgumentOutOfRangeException("Babysitters cannot work after 4:00AM");
             return false;
