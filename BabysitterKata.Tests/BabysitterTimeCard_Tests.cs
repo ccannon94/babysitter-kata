@@ -12,6 +12,10 @@ namespace BabysitterKata.Tests
     {
         [TestCase(0, 12, 15, 42)]
         [TestCase(19, 15, 22, 32)]
+        [TestCase(20, 52, 03, 15)]
+        [TestCase(17, 00, 04, 00)]
+        [TestCase(17,23, 3, 19)]
+        [TestCase(23, 42, 2, 4)]
         public void BabysitterTimeCard_GivenTwoValidTime_CalculatesTotalTime(int startTimeHours, int startTimeMinutes, int endTimeHours, int endTimeMinutes)
         {
             TwentyFourHourTime startTime = new TwentyFourHourTime(startTimeHours, startTimeMinutes);
