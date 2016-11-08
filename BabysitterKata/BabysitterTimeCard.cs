@@ -9,7 +9,6 @@ namespace BabysitterKata
     public class BabysitterTimeCard
     {
         private TwentyFourHourTime EARLIEST_START_TIME = new TwentyFourHourTime(17, 0);
-        private TwentyFourHourTime MIDNIGHT = new TwentyFourHourTime(0, 0);
         private TwentyFourHourTime LATEST_END_TIME = new TwentyFourHourTime(4, 0);
         private TwentyFourHourTime _startTime;
         private TwentyFourHourTime _endTime;
