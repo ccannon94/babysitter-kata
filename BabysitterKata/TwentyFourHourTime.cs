@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace BabysitterKata
 {
-    public class TwentyFourHourTime
+    /// <summary>
+    /// A representation of time in 24 hour clock format
+    /// Valid times range from 0000 to 2359.
+    /// </summary>
+    public class TwentyFourHourTime : IComparable, IComparable<TwentyFourHourTime>, IEquatable<TwentyFourHourTime>
     {
         private const int MIN_HOURS_VALUE = 0;
         private const int MIN_MINUTES_VALUE = 0;
@@ -15,9 +19,26 @@ namespace BabysitterKata
         private int _hours;
         private int _minutes;
 
+        /// <summary>
+        /// The number of hours since midnight.
+        /// </summary>
         public int Hours { get{ return _hours; } }
+        /// <summary>
+        /// The number of minutes since the last hour.
+        /// </summary>
         public int Minutes { get { return _minutes; } }
 
+        /// <summary>
+        /// Creates a TwentyFourHourTime.
+        /// </summary>
+        /// <param name="hours">
+        /// The number of hours since midnight.
+        /// Valid Range: 0-23
+        /// </param>
+        /// <param name="minutes">
+        /// The number of minutes since the last turn of the hour.
+        /// Valid Range: 0-59
+        /// </param>
         public TwentyFourHourTime(int hours, int minutes)
         {
             if(ValidateMinuteValue(minutes) && ValidateHourValue(hours))
@@ -42,6 +63,67 @@ namespace BabysitterKata
             if (hours <= MAX_HOURS_VALUE && hours >= MIN_HOURS_VALUE)
                 return true;
             return false;
+        }
+
+        /// <summary>
+        /// Compares this instance to a specific object and returns an indication of their relative values.
+        /// </summary>
+        /// <param name="obj">Instance of any subclass of Object to be compared.</param>
+        /// <returns>
+        /// Relative indicator of value as follows:
+        /// -1: This instance is before obj chronologically
+        /// 0: This instance is the same point in time as obj
+        /// 1: This instance is after obj chronologically
+        /// </returns>
+        public int CompareTo(object obj)
+        {
+            obj = (TwentyFourHourTime)obj;
+            if (obj != null)
+                return this.CompareTo(obj);
+            
+            //Objects of TwentyFourHourTime should always be greater than other objects
+            return 1;
+        }
+
+        /// <summary>
+        /// Compares this instance to a specific TwentyFourHourTime and returns an indication of their relative values.
+        /// </summary>
+        /// <param name="other">Instance of TwentyFourHourTime to be compared.</param>
+        /// <returns>
+        /// -1: This instance is before obj chronologically
+        /// 0: This instance is the same point in time as obj
+        /// 1: This instance is after obj chronologically
+        /// </returns>
+        public int CompareTo(TwentyFourHourTime other)
+        {
+            if (this.Hours == other.Hours)
+                return this.Minutes.CompareTo(other.Minutes);
+            return this.Hours.CompareTo(other.Hours);
+        }
+
+        /// <summary>
+        /// Indicates equality between this and another specific object.
+        /// </summary>
+        /// <param name="obj">Instance of any subclass of Object to be compared.</param>
+        /// <returns>True if equal, else false</returns>
+        public bool Equals(object obj)
+        {
+            obj = (TwentyFourHourTime)obj;
+            if (obj != null)
+                return this.Equals(obj);
+
+            //Objects of TwentyFourHourTime cannot be equal to objects of other classes.
+            return false;
+        }
+
+        /// <summary>
+        /// Indicates equality between this and another specific TwentyFourHourTime
+        /// </summary>
+        /// <param name="other">Instance of TwentyFourHourTime to be compared.</param>
+        /// <returns>True if equal, else false</returns>
+        public bool Equals(TwentyFourHourTime other)
+        {
+            return this.Hours.Equals(other.Hours) && this.Minutes.Equals(other.Minutes);
         }
     }
 }
