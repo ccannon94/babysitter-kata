@@ -65,6 +65,16 @@ namespace BabysitterKata
             return false;
         }
 
+        /// <summary>
+        /// Compares this instance to a specific object and returns an indication of their relative values.
+        /// </summary>
+        /// <param name="obj">Instance of any subclass of Object to be compared.</param>
+        /// <returns>
+        /// Relative indicator of value as follows:
+        /// -1: This instance is before obj chronologically
+        /// 0: This instance is the same point in time as obj
+        /// 1: This instance is after obj chronologically
+        /// </returns>
         public int CompareTo(object obj)
         {
             obj = (TwentyFourHourTime)obj;
@@ -75,6 +85,15 @@ namespace BabysitterKata
             return 1;
         }
 
+        /// <summary>
+        /// Compares this instance to a specific TwentyFourHourTime and returns an indication of their relative values.
+        /// </summary>
+        /// <param name="other">Instance of TwentyFourHourTime to be compared.</param>
+        /// <returns>
+        /// -1: This instance is before obj chronologically
+        /// 0: This instance is the same point in time as obj
+        /// 1: This instance is after obj chronologically
+        /// </returns>
         public int CompareTo(TwentyFourHourTime other)
         {
             if (this.Hours == other.Hours)
@@ -82,6 +101,11 @@ namespace BabysitterKata
             return this.Hours.CompareTo(other.Hours);
         }
 
+        /// <summary>
+        /// Indicates equality between this and another specific object.
+        /// </summary>
+        /// <param name="obj">Instance of any subclass of Object to be compared.</param>
+        /// <returns>True if equal, else false</returns>
         public bool Equals(object obj)
         {
             obj = (TwentyFourHourTime)obj;
@@ -92,6 +116,11 @@ namespace BabysitterKata
             return false;
         }
 
+        /// <summary>
+        /// Indicates equality between this and another specific TwentyFourHourTime
+        /// </summary>
+        /// <param name="other">Instance of TwentyFourHourTime to be compared.</param>
+        /// <returns>True if equal, else false</returns>
         public bool Equals(TwentyFourHourTime other)
         {
             return this.Hours.Equals(other.Hours) && this.Minutes.Equals(other.Minutes);

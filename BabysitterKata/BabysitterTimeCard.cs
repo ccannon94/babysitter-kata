@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace BabysitterKata
 {
+    /// <summary>
+    /// Stores a babysitter's start and end time based on the 24-hour clock.
+    /// </summary>
     public class BabysitterTimeCard
     {
         private enum START_TIME_PERIOD
@@ -20,9 +23,24 @@ namespace BabysitterKata
         private TwentyFourHourTime _startTime;
         private TwentyFourHourTime _endTime;
 
+        /// <summary>
+        /// The time the babysitting shift began.
+        /// Valid Range: 17:00 - 04:00
+        /// </summary>
         public TwentyFourHourTime StartTime { get { return _startTime; } }
+
+        /// <summary>
+        /// The time the babysitting shift ended.
+        /// Valid Range: 17:00 - 04:00
+        /// Must come after StartTime
+        /// </summary>
         public TwentyFourHourTime EndTime { get { return _endTime; } }
 
+        /// <summary>
+        /// The only constructor for a TimeCard must include a start and an end time.
+        /// </summary>
+        /// <param name="startTime">Time shift began, valid range: 17:00 - 04:00</param>
+        /// <param name="endTime">Time shift ended, valid range: 17:00 - 04:00, must come after startTime</param>
         public BabysitterTimeCard(TwentyFourHourTime startTime, TwentyFourHourTime endTime)
         {
             if (StartTimeIsValid(startTime))
@@ -34,6 +52,10 @@ namespace BabysitterKata
                 _endTime = endTime;
         }
 
+        /// <summary>
+        /// Calculate total time of a shift.
+        /// </summary>
+        /// <returns>Double representing the total time of a shift in hours</returns>
         public double CalculateTotalTime()
         {
             double hours = _endTime.Hours - _startTime.Hours;
