@@ -44,12 +44,25 @@ namespace BabysitterKata.Tests
         [TestCase(22, 0, 4, 01)]
         [TestCase(0, 0, 6, 55)]
         [TestCase(17, 16, 13, 12)]
-        public void BabySitterTimeCard_GivenEndTimeAfter4AM_ThrowsArgumentOutOfRangeException(int startTimeHours, int startTimeMinutes, int endTimeHours, int endtimeMinutes)
+        public void BabySitterTimeCard_GivenEndTimeAfter4AM_ThrowsArgumentOutOfRangeException(int startTimeHours, int startTimeMinutes, int endTimeHours, int endTimeMinutes)
         {
             TwentyFourHourTime startTime = new TwentyFourHourTime(startTimeHours, startTimeMinutes);
-            TwentyFourHourTime endTime = new TwentyFourHourTime(endTimeHours, endtimeMinutes);
+            TwentyFourHourTime endTime = new TwentyFourHourTime(endTimeHours, endTimeMinutes);
 
             Assert.Throws<ArgumentOutOfRangeException>(delegate { new BabysitterTimeCard(startTime, endTime); });
+        }
+
+        [TestCase(17, 25, 17, 0)]
+        [TestCase(0, 43, 23, 42)]
+        [TestCase(22, 32, 19, 15)]
+        [TestCase(02, 15, 0, 0)]
+        [TestCase(03, 59, 0, 15)]
+        public void BabySittertimeCard_GivenEndTimeBeforeStartTime_ThrowsArgumentException(int startTimeHours, int startTimeMinutes, int endTimeHours, int endTimeMinutes)
+        {
+            TwentyFourHourTime startTime = new TwentyFourHourTime(startTimeHours, startTimeMinutes);
+            TwentyFourHourTime endTime = new TwentyFourHourTime(endTimeHours, endTimeMinutes);
+
+            Assert.Throws<ArgumentException>(delegate { new BabysitterTimeCard(startTime, endTime); });
         }
     }
 }
