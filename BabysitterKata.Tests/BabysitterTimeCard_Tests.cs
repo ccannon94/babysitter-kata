@@ -64,5 +64,17 @@ namespace BabysitterKata.Tests
 
             Assert.Throws<ArgumentException>(delegate { new BabysitterTimeCard(startTime, endTime); });
         }
+
+        [TestCase(17, 15, 23, 45, 22, 0, 5)]
+        public void BabySitterTimeCard_GivenValidStartTimeAndBedTime_ReturnHoursBeforeBedtime(int startTimeHours, int startTimeMinutes, int endTimeHours, int endTimeMinutes, int bedTimeHours, int bedTimeMinutes, int hoursBeforeBedTime)
+        {
+            TwentyFourHourTime startTime = new TwentyFourHourTime(startTimeHours, startTimeMinutes);
+            TwentyFourHourTime endTime = new TwentyFourHourTime(endTimeHours, endTimeMinutes);
+            TwentyFourHourTime bedTime = new TwentyFourHourTime(bedTimeHours, bedTimeMinutes);
+
+            BabysitterTimeCard timeCard = new BabysitterTimeCard(startTime, endTime, bedTime);
+
+            Assert.AreEqual(hoursBeforeBedTime, timeCard.CalculateHoursBeforeBedtime());
+        }
     }
 }

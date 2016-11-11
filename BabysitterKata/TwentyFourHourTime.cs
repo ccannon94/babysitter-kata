@@ -125,5 +125,31 @@ namespace BabysitterKata
         {
             return this.Hours.Equals(other.Hours) && this.Minutes.Equals(other.Minutes);
         }
+
+        public double Minus(TwentyFourHourTime other)
+        {
+            double hours = this.Hours - other.Hours;
+            double minutes = this.Minutes - other.Minutes;
+            return hours + minutes / 60;
+        }
+
+        public double Plus(TwentyFourHourTime other)
+        {
+            double hours = this.Hours + other.Hours;
+            double minutes = this.Minutes + other.Minutes;
+
+            if (minutes >= 60)
+            {
+                minutes -= 60;
+                hours++;
+            }
+
+            if (hours >= 24)
+            {
+                hours -= 24;
+            }
+
+            return hours + minutes / 60;
+        }
     }
 }
