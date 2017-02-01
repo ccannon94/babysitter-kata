@@ -19,9 +19,12 @@ namespace BabysitterKata
 
         private TwentyFourHourTime EARLIEST_START_TIME = new TwentyFourHourTime(17, 0);
         private TwentyFourHourTime LATEST_END_TIME = new TwentyFourHourTime(4, 0);
+        private TwentyFourHourTime ONE_MINUTE_TO_MIDNIGHT = new TwentyFourHourTime(23, 59);
+        private TwentyFourHourTime MIDNIGHT = new TwentyFourHourTime(0, 0);
         private START_TIME_PERIOD _startTimePeriod;
         private TwentyFourHourTime _startTime;
         private TwentyFourHourTime _endTime;
+        private TwentyFourHourTime _bedTime;
 
         /// <summary>
         /// The time the babysitting shift began.
@@ -52,6 +55,19 @@ namespace BabysitterKata
                 _endTime = endTime;
         }
 
+        public BabysitterTimeCard(TwentyFourHourTime startTime, TwentyFourHourTime endTime, TwentyFourHourTime bedTime)
+        {
+            if (StartTimeIsValid(startTime))
+                _startTime = startTime;
+
+            _startTimePeriod = EnumerateStartTimePeriod();
+
+            if (EndTimeIsValid(endTime))
+                _endTime = endTime;
+
+            _bedTime = bedTime;
+        }
+
         /// <summary>
         /// Calculate total time of a shift.
         /// </summary>
@@ -61,6 +77,31 @@ namespace BabysitterKata
             double hours = _endTime.Hours - _startTime.Hours;
             double minutes = _endTime.Minutes - _startTime.Minutes;
             return hours + minutes / 60;
+        }
+
+        public int CalculateHoursBeforeBedtime()
+        {
+            switch (_startTimePeriod)
+            {
+                case (START_TIME_PERIOD)0x1:
+                    return CalculateHoursBeforeBedtime_MorningStart();
+                    break;
+                default:
+                    return CalculateHoursBeforeBedtime_EveningStart();
+                    break;
+            }
+        }
+
+        private int CalculateHoursBeforeBedtime_MorningStart()
+        {
+            return (int) Math.Round(_bedTime.Minus(_startTime));
+        }
+
+        private int CalculateHoursBeforeBedtime_EveningStart()
+        {
+            if (_bedTime.CompareTo(EARLIEST_START_TIME) < 0)
+                return (int) Math.Round(ONE_MINUTE_TO_MIDNIGHT.Minus(_startTime) + _bedTime.Minus(MIDNIGHT));
+            return (int) Math.Round(_bedTime.Minus(_startTime));
         }
 
         private bool StartTimeIsValid(TwentyFourHourTime startTime)
