@@ -65,16 +65,20 @@ namespace BabysitterKata.Tests
             Assert.Throws<ArgumentException>(delegate { new BabysitterTimeCard(startTime, endTime); });
         }
 
-        [TestCase(17, 15, 23, 45, 22, 0, 5)]
-        public void BabySitterTimeCard_GivenValidStartTimeAndBedTime_ReturnHoursBeforeBedtime(int startTimeHours, int startTimeMinutes, int endTimeHours, int endTimeMinutes, int bedTimeHours, int bedTimeMinutes, int hoursBeforeBedTime)
-        {
-            TwentyFourHourTime startTime = new TwentyFourHourTime(startTimeHours, startTimeMinutes);
-            TwentyFourHourTime endTime = new TwentyFourHourTime(endTimeHours, endTimeMinutes);
-            TwentyFourHourTime bedTime = new TwentyFourHourTime(bedTimeHours, bedTimeMinutes);
+		[TestCase(17, 15, 23, 45, 22, 0, 5)]
+		[TestCase(18, 23, 01, 52, 23, 30, 5)]
+		[TestCase(21, 05, 03, 35, 22, 35, 2)]
+		[TestCase(17, 01, 22, 30, 17, 25, 0)]
+		[TestCase(18, 20, 23, 32, 22, 30, 4)]
+		public void BabySitterTimeCard_GivenValidStartTimeAndBedTime_ReturnHoursBeforeBedtime(int startTimeHours, int startTimeMinutes, int endTimeHours, int endTimeMinutes, int bedTimeHours, int bedTimeMinutes, int hoursBeforeBedTime)
+		{
+			TwentyFourHourTime startTime = new TwentyFourHourTime(startTimeHours, startTimeMinutes);
+			TwentyFourHourTime endTime = new TwentyFourHourTime(endTimeHours, endTimeMinutes);
+			TwentyFourHourTime bedTime = new TwentyFourHourTime(bedTimeHours, bedTimeMinutes);
 
-            BabysitterTimeCard timeCard = new BabysitterTimeCard(startTime, endTime, bedTime);
+			BabysitterTimeCard timeCard = new BabysitterTimeCard(startTime, endTime, bedTime);
 
-            Assert.AreEqual(hoursBeforeBedTime, timeCard.CalculateHoursBeforeBedtime());
-        }
+			Assert.AreEqual(hoursBeforeBedTime, timeCard.CalculateHoursBeforeBedtime());
+		}
     }
 }
