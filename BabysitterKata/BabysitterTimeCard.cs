@@ -11,7 +11,7 @@ namespace BabysitterKata
     /// </summary>
     public class BabysitterTimeCard
     {
-        private enum START_TIME_PERIOD
+        private enum TIME_PERIOD
         {
             EVENING = 0x00,
             MORNING = 0x01
@@ -21,7 +21,8 @@ namespace BabysitterKata
         private TwentyFourHourTime LATEST_END_TIME = new TwentyFourHourTime(4, 0);
         private TwentyFourHourTime ONE_MINUTE_TO_MIDNIGHT = new TwentyFourHourTime(23, 59);
         private TwentyFourHourTime MIDNIGHT = new TwentyFourHourTime(0, 0);
-        private START_TIME_PERIOD _startTimePeriod;
+        private TIME_PERIOD _startTimePeriod;
+		private TIME_PERIOD _bedTimePeriod;
         private TwentyFourHourTime _startTime;
         private TwentyFourHourTime _endTime;
         private TwentyFourHourTime _bedTime;
@@ -38,6 +39,13 @@ namespace BabysitterKata
         /// Must come after StartTime
         /// </summary>
         public TwentyFourHourTime EndTime { get { return _endTime; } }
+
+		/// <summary>
+		/// The time that the child went to bed.
+		/// Valid Range: 17:00 - 04:00
+		/// Must fall between StartTime and EndTime
+		/// </summary>
+		public TwentyFourHourTime BedTime { get { return _bedTime; } }
 
         /// <summary>
         /// The only constructor for a TimeCard must include a start and an end time.
@@ -66,6 +74,8 @@ namespace BabysitterKata
                 _endTime = endTime;
 
             _bedTime = bedTime;
+
+			_bedTimePeriod = EnumerateBedTimePeriod();
         }
 
         /// <summary>
@@ -83,7 +93,7 @@ namespace BabysitterKata
         {
             switch (_startTimePeriod)
             {
-                case (START_TIME_PERIOD)0x1:
+                case (TIME_PERIOD)0x1:
                     return CalculateHoursBeforeBedtime_MorningStart();
                     break;
                 default:
@@ -94,7 +104,15 @@ namespace BabysitterKata
 
 		private int CalculateHoursBetweenBedtimeAndMidnight()
 		{
-			return 0;
+			switch (_bedTimePeriod)
+			{
+				case (TIME_PERIOD)0x1:
+					return 0;
+					break;
+				default:
+					return (int) Math.Round(MIDNIGHT.Minus(_bedTime));
+					break;
+			}
 		}	
 
         private int CalculateHoursBeforeBedtime_MorningStart()
@@ -144,11 +162,18 @@ namespace BabysitterKata
             }
         }
 
-        private START_TIME_PERIOD EnumerateStartTimePeriod()
+        private TIME_PERIOD EnumerateStartTimePeriod()
         {
             if (StartTime.CompareTo(EARLIEST_START_TIME) >= 0)
-                return START_TIME_PERIOD.EVENING;
-            return START_TIME_PERIOD.MORNING;
+                return TIME_PERIOD.EVENING;
+            return TIME_PERIOD.MORNING;
         }
+
+		private TIME_PERIOD EnumerateBedTimePeriod()
+		{
+			if (BedTime.CompareTo(EARLIEST_START_TIME) >= 0)
+				return TIME_PERIOD.EVENING;
+			return TIME_PERIOD.MORNING;
+		}
     }
 }
