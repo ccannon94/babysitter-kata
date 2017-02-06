@@ -92,6 +92,11 @@ namespace BabysitterKata
             }
         }
 
+		private int CalculateHoursBetweenBedtimeAndMidnight()
+		{
+			return 0;
+		}	
+
         private int CalculateHoursBeforeBedtime_MorningStart()
         {
             return (int) Math.Round(_bedTime.Minus(_startTime));
