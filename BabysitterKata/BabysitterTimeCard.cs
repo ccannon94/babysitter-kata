@@ -180,10 +180,39 @@ namespace BabysitterKata
 
         private bool bedTimeIsValid(TwentyFourHourTime bedTime)
         {
+            if (startTimePreceedsBedTime(bedTime) && bedTimePreceedsEndTime(bedTime))
+                return true;
+            return false;
+        }
+
+        private bool startTimePreceedsBedTime(TwentyFourHourTime bedTime)
+        {
             if (bedTime.CompareTo(StartTime) >= 0)
                 return true;
             throw new ArgumentException("Bed time must come after start time");
             return false;
+        }
+
+        private bool bedTimePreceedsEndTime(TwentyFourHourTime bedTime)
+        {
+            switch((int)_endTimePeriod)
+            {
+                case 0x01:
+                    if (bedTime.CompareTo(StartTime) >= 0)
+                        return true;
+                    if (bedTime.CompareTo(EndTime) <= 0)
+                        return true;
+                    throw new ArgumentException("Bed time must come before end time");
+                    return false;
+                    break;
+                default:
+                    if (bedTime.CompareTo(EndTime) <= 0)
+                        return true;
+                    throw new ArgumentException("Bed time must come before end time");
+                    return false;
+                    break;
+            }
+            
         }
 
         private TIME_PERIOD EnumerateStartTimePeriod()
