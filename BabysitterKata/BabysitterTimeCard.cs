@@ -102,7 +102,7 @@ namespace BabysitterKata
             }
         }
 
-		private int CalculateHoursBetweenBedtimeAndMidnight()
+		public int CalculateHoursBetweenBedtimeAndMidnight()
 		{
 			switch (_bedTimePeriod)
 			{
