@@ -91,6 +91,19 @@ namespace BabysitterKata.Tests
             Assert.Throws<ArgumentException>(delegate { new BabysitterTimeCard(startTime, endTime, bedTime); });
         }
 
+        [TestCase(17, 00, 04, 00, 01, 15)]
+        [TestCase(18, 35, 02, 15, 02, 15)]
+        [TestCase(23, 30, 01, 15, 01, 00)]
+        [TestCase(20, 00, 00, 03, 00, 01)]
+        public void BabysitterTimeCard_GivenBedTimeAfterMidnight_ThrowsArgumentException(int startTimeHours, int startTimeMinutes, int endTimeHours, int endTimeMinutes, int bedTimeHours, int bedTimeMinutes)
+        {
+            TwentyFourHourTime startTime = new TwentyFourHourTime(startTimeHours, startTimeMinutes);
+            TwentyFourHourTime endTime = new TwentyFourHourTime(endTimeHours, endTimeMinutes);
+            TwentyFourHourTime bedTime = new TwentyFourHourTime(bedTimeHours, bedTimeMinutes);
+
+            Assert.Throws<ArgumentException>(delegate { new BabysitterTimeCard(startTime, endTime, bedTime); });
+        }
+
         [TestCase(17, 15, 23, 45, 22, 0, 5)]
 		[TestCase(18, 23, 01, 52, 23, 30, 5)]
 		[TestCase(21, 05, 03, 35, 22, 35, 2)]
