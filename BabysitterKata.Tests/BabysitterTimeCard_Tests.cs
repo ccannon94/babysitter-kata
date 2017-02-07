@@ -81,7 +81,7 @@ namespace BabysitterKata.Tests
 			Assert.AreEqual(hoursBeforeBedTime, timeCard.CalculateHoursBeforeBedtime());
 		}
 
-		[TestCase(17, 16, 01, 05, 22, 00, 2)]
+		[TestCase(17, 16, 01, 05, 22, 00, 3)]
 		public void BabysitterTimeCard_GivenValidStartEndAndBedTime_ReturnHoursBetweenBedtimeAndMidnight(int startTimeHours, int startTimeMinutes, int endTimeHours, int endTimeMinutes, int bedTimeHours, int bedTimeMinutes, int hoursBetweenBedtimeAndMidnight)
 		{
 			TwentyFourHourTime startTime = new TwentyFourHourTime(startTimeHours, startTimeMinutes);

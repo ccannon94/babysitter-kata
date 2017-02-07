@@ -128,8 +128,26 @@ namespace BabysitterKata
 
         public double Minus(TwentyFourHourTime other)
         {
-            double hours = this.Hours - other.Hours;
-            double minutes = this.Minutes - other.Minutes;
+            int otherHours = other.Hours;
+            int otherMinutes = other.Minutes;
+
+            if (other.Hours > this.Hours)
+            {
+                otherHours += 24;
+            }
+            if (other.Minutes > this.Minutes)
+            {
+                otherMinutes += 60;
+                otherHours--;
+            }
+
+            return subtract(otherHours, otherMinutes);
+        }
+
+        private double subtract(int otherHours, int otherMinutes)
+        {
+            double hours = this.Hours - otherHours;
+            double minutes = this.Minutes - otherMinutes;
             return hours + minutes / 60;
         }
 
