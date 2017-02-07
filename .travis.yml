@@ -6,3 +6,8 @@ install:
 script:
   - xbuild /p:Configuration=Release BabysitterKata.sln
   - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./BabysitterKata.Tests/bin/Release/BabysitterKata.Tests.dll
+notifications:
+  pushover:
+    api_key: a73mazs43fmmwdardg4ahf3ppifj15
+    users:
+      - udpa41py8vkzerk5t5dv4gk6vwqt96
