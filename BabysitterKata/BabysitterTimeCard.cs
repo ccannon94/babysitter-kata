@@ -75,8 +75,9 @@ namespace BabysitterKata
                 _endTime = endTime;
 
             _endTimePeriod = EnumerateEndTimePeriod();
-
-            _bedTime = bedTime;
+            
+            if (bedTimeIsValid(bedTime))
+                _bedTime = bedTime;
 
 			_bedTimePeriod = EnumerateBedTimePeriod();
         }
@@ -175,6 +176,14 @@ namespace BabysitterKata
                     return false;
                     break;
             }
+        }
+
+        private bool bedTimeIsValid(TwentyFourHourTime bedTime)
+        {
+            if (bedTime.CompareTo(StartTime) >= 0)
+                return true;
+            throw new ArgumentException("Bed time must come after start time");
+            return false;
         }
 
         private TIME_PERIOD EnumerateStartTimePeriod()
