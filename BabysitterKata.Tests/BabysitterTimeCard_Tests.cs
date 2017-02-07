@@ -89,6 +89,9 @@ namespace BabysitterKata.Tests
 		}
 
         [TestCase(17, 45, 03, 33, 22, 45, 4)]
+        [TestCase(18, 45, 23, 11, 22, 50, 0)]
+        [TestCase(17, 00, 01, 18, 23, 15, 1)]
+        [TestCase(19, 15, 02, 31, 21, 43, 3)]
         public void BabysitterTimeCard_GivenValidBabysitterTimeCard_ReturnHoursAfterMidnight(int startTimeHours, int startTimeMinutes, int endTimeHours, int endTimeMinutes, int bedTimeHours, int bedTimeMinutes, int hoursAfterMidnight)
         {
             var timeCard = initializeTimeCard(startTimeHours, startTimeMinutes, endTimeHours, endTimeMinutes, bedTimeHours, bedTimeMinutes);
