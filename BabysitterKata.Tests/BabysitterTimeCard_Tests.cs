@@ -72,13 +72,9 @@ namespace BabysitterKata.Tests
 		[TestCase(18, 20, 23, 32, 22, 30, 4)]
 		public void BabySitterTimeCard_GivenValidStartTimeAndBedTime_ReturnHoursBeforeBedtime(int startTimeHours, int startTimeMinutes, int endTimeHours, int endTimeMinutes, int bedTimeHours, int bedTimeMinutes, int hoursBeforeBedTime)
 		{
-			TwentyFourHourTime startTime = new TwentyFourHourTime(startTimeHours, startTimeMinutes);
-			TwentyFourHourTime endTime = new TwentyFourHourTime(endTimeHours, endTimeMinutes);
-			TwentyFourHourTime bedTime = new TwentyFourHourTime(bedTimeHours, bedTimeMinutes);
+            var timeCard = initializeTimeCard(startTimeHours, startTimeMinutes, endTimeHours, endTimeMinutes, bedTimeHours, bedTimeMinutes);
 
-			BabysitterTimeCard timeCard = new BabysitterTimeCard(startTime, endTime, bedTime);
-
-			Assert.AreEqual(hoursBeforeBedTime, timeCard.CalculateHoursBeforeBedtime());
+            Assert.AreEqual(hoursBeforeBedTime, timeCard.CalculateHoursBeforeBedtime());
 		}
 
 		[TestCase(17, 16, 01, 05, 22, 00, 2)]
@@ -87,13 +83,26 @@ namespace BabysitterKata.Tests
         [TestCase(22, 15, 02, 30, 22, 30, 2)]
 		public void BabysitterTimeCard_GivenValidStartEndAndBedTime_ReturnHoursBetweenBedtimeAndMidnight(int startTimeHours, int startTimeMinutes, int endTimeHours, int endTimeMinutes, int bedTimeHours, int bedTimeMinutes, int hoursBetweenBedtimeAndMidnight)
 		{
-			TwentyFourHourTime startTime = new TwentyFourHourTime(startTimeHours, startTimeMinutes);
-			TwentyFourHourTime endTime = new TwentyFourHourTime(endTimeHours, endTimeMinutes);
-			TwentyFourHourTime bedTime = new TwentyFourHourTime(bedTimeHours, bedTimeMinutes);
-
-			BabysitterTimeCard timeCard = new BabysitterTimeCard(startTime, endTime, bedTime);
+            var timeCard = initializeTimeCard(startTimeHours, startTimeMinutes, endTimeHours, endTimeMinutes, bedTimeHours, bedTimeMinutes);
 
 			Assert.AreEqual(hoursBetweenBedtimeAndMidnight, timeCard.CalculateHoursBetweenBedtimeAndMidnight());
 		}
+
+        [TestCase(17, 45, 03, 33, 22, 45, 4)]
+        public void BabysitterTimeCard_GivenValidBabysitterTimeCard_ReturnHoursAfterMidnight(int startTimeHours, int startTimeMinutes, int endTimeHours, int endTimeMinutes, int bedTimeHours, int bedTimeMinutes, int hoursAfterMidnight)
+        {
+            var timeCard = initializeTimeCard(startTimeHours, startTimeMinutes, endTimeHours, endTimeMinutes, bedTimeHours, bedTimeMinutes);
+
+            Assert.AreEqual(hoursAfterMidnight, timeCard.CalculateHoursAfterMidnight();
+        }
+
+        private BabysitterTimeCard initializeTimeCard(int startTimeHours, int startTimeMinutes, int endTimeHours, int endTimeMinutes, int bedTimeHours, int bedTimeMinutes)
+        {
+            var startTime = new TwentyFourHourTime(startTimeHours, startTimeMinutes);
+            var endTime = new TwentyFourHourTime(endTimeHours, endTimeMinutes);
+            var bedTime = new TwentyFourHourTime(bedTimeHours, bedTimeMinutes);
+
+            return new BabysitterTimeCard(startTime, endTime, bedTime);
+        }
 	}
 }
