@@ -23,6 +23,7 @@ namespace BabysitterKata
         private TwentyFourHourTime MIDNIGHT = new TwentyFourHourTime(0, 0);
         private TIME_PERIOD _startTimePeriod;
 		private TIME_PERIOD _bedTimePeriod;
+        private TIME_PERIOD _endTimePeriod;
         private TwentyFourHourTime _startTime;
         private TwentyFourHourTime _endTime;
         private TwentyFourHourTime _bedTime;
@@ -73,6 +74,8 @@ namespace BabysitterKata
             if (EndTimeIsValid(endTime))
                 _endTime = endTime;
 
+            _endTimePeriod = EnumerateEndTimePeriod();
+
             _bedTime = bedTime;
 
 			_bedTimePeriod = EnumerateBedTimePeriod();
@@ -114,6 +117,18 @@ namespace BabysitterKata
 					break;
 			}
 		}	
+
+        public int CalculateHoursAfterMidnight()
+        {
+            switch (_endTimePeriod)
+            {
+                case (TIME_PERIOD)0x0:
+                    return 0;
+                    break;
+                default:
+                    return (int)Math.Round(_endTime.Minus(MIDNIGHT));
+            }
+        }
 
         private int CalculateHoursBeforeBedtime_MorningStart()
         {
@@ -175,5 +190,12 @@ namespace BabysitterKata
 				return TIME_PERIOD.EVENING;
 			return TIME_PERIOD.MORNING;
 		}
+
+        private TIME_PERIOD EnumerateEndTimePeriod()
+        {
+            if (EndTime.CompareTo(EARLIEST_START_TIME) >= 0)
+                return TIME_PERIOD.EVENING;
+            return TIME_PERIOD.MORNING;
+        }
     }
 }

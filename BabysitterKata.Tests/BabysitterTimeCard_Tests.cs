@@ -93,7 +93,7 @@ namespace BabysitterKata.Tests
         {
             var timeCard = initializeTimeCard(startTimeHours, startTimeMinutes, endTimeHours, endTimeMinutes, bedTimeHours, bedTimeMinutes);
 
-            Assert.AreEqual(hoursAfterMidnight, timeCard.CalculateHoursAfterMidnight();
+            Assert.AreEqual(hoursAfterMidnight, timeCard.CalculateHoursAfterMidnight());
         }
 
         private BabysitterTimeCard initializeTimeCard(int startTimeHours, int startTimeMinutes, int endTimeHours, int endTimeMinutes, int bedTimeHours, int bedTimeMinutes)
