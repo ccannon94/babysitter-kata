@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BabysitterPaySheet_Tests.cs" />
     <Compile Include="BabysitterTimeCard_Tests.cs" />
     <Compile Include="TwentyFourHourTime_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
