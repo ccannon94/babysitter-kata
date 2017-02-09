@@ -9,7 +9,10 @@ namespace BabysitterKata.Tests
 {
     class BabysitterPaySheet_Tests
     {
+        [TestCase(0, 0, 0)]
         [TestCase(3, 2, 3)]
+        [TestCase(2, 5, 3)]
+        [TestCase(1, 2, 5)]
         public void BabysitterPaySheet_GivenThreeValidParameters_CreateBabysitterPaySheet(int hrsBeforeBed, int hrsBedToMidnight, int hrsAfterMidnight)
         {
             BabysitterPaySheet paySheet = new BabysitterPaySheet(hrsBeforeBed, hrsBedToMidnight, hrsAfterMidnight);
