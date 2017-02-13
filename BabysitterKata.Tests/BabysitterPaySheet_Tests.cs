@@ -19,5 +19,13 @@ namespace BabysitterKata.Tests
 
             Assert.IsInstanceOf(typeof(BabysitterPaySheet), paySheet);
         }
+
+        [TestCase(1, 2, 3, 76)]
+        public void BabysitterPaySheet_GivenThreeValidParameters_ReturnCorrectPay(int hrsBeforeBed, int hrsBedToMidnight, int hrsAfterMidnight, int expectedPay)
+        {
+            BabysitterPaySheet paySheet = new BabysitterPaySheet(hrsBeforeBed, hrsBedToMidnight, hrsAfterMidnight);
+
+            Assert.AreEqual(expectedPay, paySheet.Pay);
+        }
     }
 }
