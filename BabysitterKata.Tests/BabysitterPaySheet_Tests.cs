@@ -21,6 +21,9 @@ namespace BabysitterKata.Tests
         }
 
         [TestCase(1, 2, 3, 76)]
+        [TestCase(2, 3, 1, 64)]
+        [TestCase(3, 1, 0, 44)]
+        [TestCase(6, 1, 2, 112)]
         public void BabysitterPaySheet_GivenThreeValidParameters_ReturnCorrectPay(int hrsBeforeBed, int hrsBedToMidnight, int hrsAfterMidnight, int expectedPay)
         {
             BabysitterPaySheet paySheet = new BabysitterPaySheet(hrsBeforeBed, hrsBedToMidnight, hrsAfterMidnight);
