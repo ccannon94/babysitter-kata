@@ -43,7 +43,11 @@ namespace BabysitterKata.Tests
             Assert.AreEqual(expectedPay, paySheet.Pay);
         }
 
+        [TestCase(1, 0, 12)]
+        [TestCase(0, 0, 0)]
+        [TestCase(3, 1, 44)]
         [TestCase(2, 4, 56)]
+        [TestCase(2, 2, 40)]
         public void BabysitterPaySheet_GivenTwoValidParameters_ReturnCorrectPay(int hrsBeforeBed, int hrsBedToMidnight, int expectedPay)
         {
             BabysitterPaySheet paySheet = new BabysitterPaySheet(hrsBeforeBed, hrsBedToMidnight);
