@@ -16,6 +16,11 @@ namespace BabysitterKata
 
         private int _pay;
 
+        public BabysitterPaySheet(int hrsBeforeBd, int hrsBedToMidnight)
+        {
+            _pay = (hrsBeforeBd * BEFORE_BEDTIME_PAY_RATE) + (hrsBedToMidnight * BEDTIME_TO_MIDNIGHT_PAY_RATE);
+        }
+
         public BabysitterPaySheet(int hrsBeforeBed, int hrsBedToMidnight, int hrsAfterMidnight)
         {
             _pay = (hrsBeforeBed * BEFORE_BEDTIME_PAY_RATE) + (hrsBedToMidnight * BEDTIME_TO_MIDNIGHT_PAY_RATE) + (hrsAfterMidnight * AFTER_MIDNIGHT_PAY_RATE);
