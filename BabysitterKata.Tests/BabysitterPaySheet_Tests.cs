@@ -20,6 +20,14 @@ namespace BabysitterKata.Tests
             Assert.IsInstanceOf(typeof(BabysitterPaySheet), paySheet);
         }
 
+        [TestCase(2, 4)]
+        public void BabysitterPaySheet_GivenTwoValidParameters_CreateBabysitterPaySheet(int hrsBeforeBed, int hrsBedToMidnight)
+        {
+            BabysitterPaySheet paySheet = new BabysitterPaySheet(hrsBeforeBed, hrsBedToMidnight);
+
+            Assert.IsInstanceOf(typeof(BabysitterPaySheet), paySheet);
+        }
+
         [TestCase(1, 2, 3, 76)]
         [TestCase(2, 3, 1, 64)]
         [TestCase(3, 1, 0, 44)]
