@@ -47,6 +47,7 @@
             this.TimeCardSubmit_Button = new System.Windows.Forms.Button();
             this.BedTimeEnabled_CheckBox = new System.Windows.Forms.CheckBox();
             this.PaySheet_GroupBox = new System.Windows.Forms.GroupBox();
+            this.PayUnit_Label = new System.Windows.Forms.Label();
             this.Pay_Label = new System.Windows.Forms.Label();
             this.HoursAfterMidnight_Label = new System.Windows.Forms.Label();
             this.HoursBedtimeToMidnight_Label = new System.Windows.Forms.Label();
@@ -55,7 +56,9 @@
             this.HoursAfterMidnight_TextBox = new System.Windows.Forms.TextBox();
             this.HoursBedTimeToMidnight_TextBox = new System.Windows.Forms.TextBox();
             this.HoursBeforeBedtime_TextBox = new System.Windows.Forms.TextBox();
-            this.PayUnit_Label = new System.Windows.Forms.Label();
+            this.StartTime_AMPM_ComboBox = new System.Windows.Forms.ComboBox();
+            this.EndTime_AMPM_ComboBox = new System.Windows.Forms.ComboBox();
+            this.BedTime_AMPM_ComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.StartTimeHour_NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartTimeMinute_NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EndTimeHour_NumericUpDown)).BeginInit();
@@ -110,6 +113,9 @@
             // 
             // TimeCard_GroupBox
             // 
+            this.TimeCard_GroupBox.Controls.Add(this.BedTime_AMPM_ComboBox);
+            this.TimeCard_GroupBox.Controls.Add(this.EndTime_AMPM_ComboBox);
+            this.TimeCard_GroupBox.Controls.Add(this.StartTime_AMPM_ComboBox);
             this.TimeCard_GroupBox.Controls.Add(this.BedTimeMinute_Label);
             this.TimeCard_GroupBox.Controls.Add(this.BedTimeHour_Label);
             this.TimeCard_GroupBox.Controls.Add(this.BedTime_Label);
@@ -252,6 +258,15 @@
             this.PaySheet_GroupBox.TabStop = false;
             this.PaySheet_GroupBox.Text = "Pay Sheet";
             // 
+            // PayUnit_Label
+            // 
+            this.PayUnit_Label.AutoSize = true;
+            this.PayUnit_Label.Location = new System.Drawing.Point(518, 74);
+            this.PayUnit_Label.Name = "PayUnit_Label";
+            this.PayUnit_Label.Size = new System.Drawing.Size(18, 20);
+            this.PayUnit_Label.TabIndex = 8;
+            this.PayUnit_Label.Text = "$";
+            // 
             // Pay_Label
             // 
             this.Pay_Label.AutoSize = true;
@@ -320,14 +335,29 @@
             this.HoursBeforeBedtime_TextBox.Size = new System.Drawing.Size(100, 26);
             this.HoursBeforeBedtime_TextBox.TabIndex = 0;
             // 
-            // PayUnit_Label
+            // StartTime_AMPM_ComboBox
             // 
-            this.PayUnit_Label.AutoSize = true;
-            this.PayUnit_Label.Location = new System.Drawing.Point(518, 74);
-            this.PayUnit_Label.Name = "PayUnit_Label";
-            this.PayUnit_Label.Size = new System.Drawing.Size(18, 20);
-            this.PayUnit_Label.TabIndex = 8;
-            this.PayUnit_Label.Text = "$";
+            this.StartTime_AMPM_ComboBox.FormattingEnabled = true;
+            this.StartTime_AMPM_ComboBox.Location = new System.Drawing.Point(463, 79);
+            this.StartTime_AMPM_ComboBox.Name = "StartTime_AMPM_ComboBox";
+            this.StartTime_AMPM_ComboBox.Size = new System.Drawing.Size(121, 28);
+            this.StartTime_AMPM_ComboBox.TabIndex = 18;
+            // 
+            // EndTime_AMPM_ComboBox
+            // 
+            this.EndTime_AMPM_ComboBox.FormattingEnabled = true;
+            this.EndTime_AMPM_ComboBox.Location = new System.Drawing.Point(463, 141);
+            this.EndTime_AMPM_ComboBox.Name = "EndTime_AMPM_ComboBox";
+            this.EndTime_AMPM_ComboBox.Size = new System.Drawing.Size(121, 28);
+            this.EndTime_AMPM_ComboBox.TabIndex = 19;
+            // 
+            // BedTime_AMPM_ComboBox
+            // 
+            this.BedTime_AMPM_ComboBox.FormattingEnabled = true;
+            this.BedTime_AMPM_ComboBox.Location = new System.Drawing.Point(463, 210);
+            this.BedTime_AMPM_ComboBox.Name = "BedTime_AMPM_ComboBox";
+            this.BedTime_AMPM_ComboBox.Size = new System.Drawing.Size(121, 28);
+            this.BedTime_AMPM_ComboBox.TabIndex = 20;
             // 
             // Form1
             // 
@@ -382,6 +412,9 @@
         private System.Windows.Forms.TextBox HoursBedTimeToMidnight_TextBox;
         private System.Windows.Forms.TextBox HoursBeforeBedtime_TextBox;
         private System.Windows.Forms.Label PayUnit_Label;
+        private System.Windows.Forms.ComboBox BedTime_AMPM_ComboBox;
+        private System.Windows.Forms.ComboBox EndTime_AMPM_ComboBox;
+        private System.Windows.Forms.ComboBox StartTime_AMPM_ComboBox;
     }
 }
 
