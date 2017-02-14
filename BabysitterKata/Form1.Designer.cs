@@ -28,12 +28,360 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.StartTimeHour_NumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.StartTimeMinute_NumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.EndTimeHour_NumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.EndTimeMinute_NumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.BedTimeHour_NumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.BedTimeMinute_NumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.TimeCard_GroupBox = new System.Windows.Forms.GroupBox();
+            this.BedTimeMinute_Label = new System.Windows.Forms.Label();
+            this.BedTimeHour_Label = new System.Windows.Forms.Label();
+            this.BedTime_Label = new System.Windows.Forms.Label();
+            this.EndTimeMinute_Label = new System.Windows.Forms.Label();
+            this.EndTimeHour_Label = new System.Windows.Forms.Label();
+            this.EndTime_Label = new System.Windows.Forms.Label();
+            this.StartTimeMinute_Label = new System.Windows.Forms.Label();
+            this.StartTimeHour_Label = new System.Windows.Forms.Label();
+            this.StartTime_Label = new System.Windows.Forms.Label();
+            this.TimeCardSubmit_Button = new System.Windows.Forms.Button();
+            this.BedTimeEnabled_CheckBox = new System.Windows.Forms.CheckBox();
+            this.PaySheet_GroupBox = new System.Windows.Forms.GroupBox();
+            this.Pay_Label = new System.Windows.Forms.Label();
+            this.HoursAfterMidnight_Label = new System.Windows.Forms.Label();
+            this.HoursBedtimeToMidnight_Label = new System.Windows.Forms.Label();
+            this.HoursBeforeBedtime_Label = new System.Windows.Forms.Label();
+            this.Pay_TextBox = new System.Windows.Forms.TextBox();
+            this.HoursAfterMidnight_TextBox = new System.Windows.Forms.TextBox();
+            this.HoursBedTimeToMidnight_TextBox = new System.Windows.Forms.TextBox();
+            this.HoursBeforeBedtime_TextBox = new System.Windows.Forms.TextBox();
+            this.PayUnit_Label = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.StartTimeHour_NumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartTimeMinute_NumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EndTimeHour_NumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EndTimeMinute_NumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BedTimeHour_NumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BedTimeMinute_NumericUpDown)).BeginInit();
+            this.TimeCard_GroupBox.SuspendLayout();
+            this.PaySheet_GroupBox.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // StartTimeHour_NumericUpDown
+            // 
+            this.StartTimeHour_NumericUpDown.Location = new System.Drawing.Point(38, 77);
+            this.StartTimeHour_NumericUpDown.Name = "StartTimeHour_NumericUpDown";
+            this.StartTimeHour_NumericUpDown.Size = new System.Drawing.Size(120, 26);
+            this.StartTimeHour_NumericUpDown.TabIndex = 1;
+            // 
+            // StartTimeMinute_NumericUpDown
+            // 
+            this.StartTimeMinute_NumericUpDown.Location = new System.Drawing.Point(248, 77);
+            this.StartTimeMinute_NumericUpDown.Name = "StartTimeMinute_NumericUpDown";
+            this.StartTimeMinute_NumericUpDown.Size = new System.Drawing.Size(120, 26);
+            this.StartTimeMinute_NumericUpDown.TabIndex = 2;
+            // 
+            // EndTimeHour_NumericUpDown
+            // 
+            this.EndTimeHour_NumericUpDown.Location = new System.Drawing.Point(38, 143);
+            this.EndTimeHour_NumericUpDown.Name = "EndTimeHour_NumericUpDown";
+            this.EndTimeHour_NumericUpDown.Size = new System.Drawing.Size(120, 26);
+            this.EndTimeHour_NumericUpDown.TabIndex = 3;
+            // 
+            // EndTimeMinute_NumericUpDown
+            // 
+            this.EndTimeMinute_NumericUpDown.Location = new System.Drawing.Point(248, 143);
+            this.EndTimeMinute_NumericUpDown.Name = "EndTimeMinute_NumericUpDown";
+            this.EndTimeMinute_NumericUpDown.Size = new System.Drawing.Size(120, 26);
+            this.EndTimeMinute_NumericUpDown.TabIndex = 4;
+            // 
+            // BedTimeHour_NumericUpDown
+            // 
+            this.BedTimeHour_NumericUpDown.Location = new System.Drawing.Point(38, 216);
+            this.BedTimeHour_NumericUpDown.Name = "BedTimeHour_NumericUpDown";
+            this.BedTimeHour_NumericUpDown.Size = new System.Drawing.Size(120, 26);
+            this.BedTimeHour_NumericUpDown.TabIndex = 5;
+            // 
+            // BedTimeMinute_NumericUpDown
+            // 
+            this.BedTimeMinute_NumericUpDown.Location = new System.Drawing.Point(248, 216);
+            this.BedTimeMinute_NumericUpDown.Name = "BedTimeMinute_NumericUpDown";
+            this.BedTimeMinute_NumericUpDown.Size = new System.Drawing.Size(120, 26);
+            this.BedTimeMinute_NumericUpDown.TabIndex = 6;
+            // 
+            // TimeCard_GroupBox
+            // 
+            this.TimeCard_GroupBox.Controls.Add(this.BedTimeMinute_Label);
+            this.TimeCard_GroupBox.Controls.Add(this.BedTimeHour_Label);
+            this.TimeCard_GroupBox.Controls.Add(this.BedTime_Label);
+            this.TimeCard_GroupBox.Controls.Add(this.EndTimeMinute_Label);
+            this.TimeCard_GroupBox.Controls.Add(this.EndTimeHour_Label);
+            this.TimeCard_GroupBox.Controls.Add(this.EndTime_Label);
+            this.TimeCard_GroupBox.Controls.Add(this.StartTimeMinute_Label);
+            this.TimeCard_GroupBox.Controls.Add(this.StartTimeHour_Label);
+            this.TimeCard_GroupBox.Controls.Add(this.StartTime_Label);
+            this.TimeCard_GroupBox.Controls.Add(this.TimeCardSubmit_Button);
+            this.TimeCard_GroupBox.Controls.Add(this.BedTimeEnabled_CheckBox);
+            this.TimeCard_GroupBox.Controls.Add(this.BedTimeMinute_NumericUpDown);
+            this.TimeCard_GroupBox.Controls.Add(this.BedTimeHour_NumericUpDown);
+            this.TimeCard_GroupBox.Controls.Add(this.EndTimeMinute_NumericUpDown);
+            this.TimeCard_GroupBox.Controls.Add(this.EndTimeHour_NumericUpDown);
+            this.TimeCard_GroupBox.Controls.Add(this.StartTimeMinute_NumericUpDown);
+            this.TimeCard_GroupBox.Controls.Add(this.StartTimeHour_NumericUpDown);
+            this.TimeCard_GroupBox.Location = new System.Drawing.Point(31, 30);
+            this.TimeCard_GroupBox.Name = "TimeCard_GroupBox";
+            this.TimeCard_GroupBox.Size = new System.Drawing.Size(670, 318);
+            this.TimeCard_GroupBox.TabIndex = 7;
+            this.TimeCard_GroupBox.TabStop = false;
+            this.TimeCard_GroupBox.Text = "Time Card";
+            // 
+            // BedTimeMinute_Label
+            // 
+            this.BedTimeMinute_Label.AutoSize = true;
+            this.BedTimeMinute_Label.Location = new System.Drawing.Point(374, 218);
+            this.BedTimeMinute_Label.Name = "BedTimeMinute_Label";
+            this.BedTimeMinute_Label.Size = new System.Drawing.Size(57, 20);
+            this.BedTimeMinute_Label.TabIndex = 17;
+            this.BedTimeMinute_Label.Text = "Minute";
+            // 
+            // BedTimeHour_Label
+            // 
+            this.BedTimeHour_Label.AutoSize = true;
+            this.BedTimeHour_Label.Location = new System.Drawing.Point(164, 218);
+            this.BedTimeHour_Label.Name = "BedTimeHour_Label";
+            this.BedTimeHour_Label.Size = new System.Drawing.Size(44, 20);
+            this.BedTimeHour_Label.TabIndex = 16;
+            this.BedTimeHour_Label.Text = "Hour";
+            // 
+            // BedTime_Label
+            // 
+            this.BedTime_Label.AutoSize = true;
+            this.BedTime_Label.Location = new System.Drawing.Point(34, 193);
+            this.BedTime_Label.Name = "BedTime_Label";
+            this.BedTime_Label.Size = new System.Drawing.Size(76, 20);
+            this.BedTime_Label.TabIndex = 15;
+            this.BedTime_Label.Text = "Bed Time";
+            // 
+            // EndTimeMinute_Label
+            // 
+            this.EndTimeMinute_Label.AutoSize = true;
+            this.EndTimeMinute_Label.Location = new System.Drawing.Point(374, 145);
+            this.EndTimeMinute_Label.Name = "EndTimeMinute_Label";
+            this.EndTimeMinute_Label.Size = new System.Drawing.Size(57, 20);
+            this.EndTimeMinute_Label.TabIndex = 14;
+            this.EndTimeMinute_Label.Text = "Minute";
+            // 
+            // EndTimeHour_Label
+            // 
+            this.EndTimeHour_Label.AutoSize = true;
+            this.EndTimeHour_Label.Location = new System.Drawing.Point(164, 145);
+            this.EndTimeHour_Label.Name = "EndTimeHour_Label";
+            this.EndTimeHour_Label.Size = new System.Drawing.Size(44, 20);
+            this.EndTimeHour_Label.TabIndex = 13;
+            this.EndTimeHour_Label.Text = "Hour";
+            // 
+            // EndTime_Label
+            // 
+            this.EndTime_Label.AutoSize = true;
+            this.EndTime_Label.Location = new System.Drawing.Point(34, 120);
+            this.EndTime_Label.Name = "EndTime_Label";
+            this.EndTime_Label.Size = new System.Drawing.Size(76, 20);
+            this.EndTime_Label.TabIndex = 12;
+            this.EndTime_Label.Text = "End Time";
+            // 
+            // StartTimeMinute_Label
+            // 
+            this.StartTimeMinute_Label.AutoSize = true;
+            this.StartTimeMinute_Label.Location = new System.Drawing.Point(374, 79);
+            this.StartTimeMinute_Label.Name = "StartTimeMinute_Label";
+            this.StartTimeMinute_Label.Size = new System.Drawing.Size(57, 20);
+            this.StartTimeMinute_Label.TabIndex = 11;
+            this.StartTimeMinute_Label.Text = "Minute";
+            // 
+            // StartTimeHour_Label
+            // 
+            this.StartTimeHour_Label.AutoSize = true;
+            this.StartTimeHour_Label.Location = new System.Drawing.Point(164, 79);
+            this.StartTimeHour_Label.Name = "StartTimeHour_Label";
+            this.StartTimeHour_Label.Size = new System.Drawing.Size(44, 20);
+            this.StartTimeHour_Label.TabIndex = 10;
+            this.StartTimeHour_Label.Text = "Hour";
+            // 
+            // StartTime_Label
+            // 
+            this.StartTime_Label.AutoSize = true;
+            this.StartTime_Label.Location = new System.Drawing.Point(34, 54);
+            this.StartTime_Label.Name = "StartTime_Label";
+            this.StartTime_Label.Size = new System.Drawing.Size(82, 20);
+            this.StartTime_Label.TabIndex = 9;
+            this.StartTime_Label.Text = "Start Time";
+            // 
+            // TimeCardSubmit_Button
+            // 
+            this.TimeCardSubmit_Button.Location = new System.Drawing.Point(463, 270);
+            this.TimeCardSubmit_Button.Name = "TimeCardSubmit_Button";
+            this.TimeCardSubmit_Button.Size = new System.Drawing.Size(155, 32);
+            this.TimeCardSubmit_Button.TabIndex = 8;
+            this.TimeCardSubmit_Button.Text = "Submit Time Card";
+            this.TimeCardSubmit_Button.UseVisualStyleBackColor = true;
+            // 
+            // BedTimeEnabled_CheckBox
+            // 
+            this.BedTimeEnabled_CheckBox.AutoSize = true;
+            this.BedTimeEnabled_CheckBox.Location = new System.Drawing.Point(262, 270);
+            this.BedTimeEnabled_CheckBox.Name = "BedTimeEnabled_CheckBox";
+            this.BedTimeEnabled_CheckBox.Size = new System.Drawing.Size(165, 24);
+            this.BedTimeEnabled_CheckBox.TabIndex = 7;
+            this.BedTimeEnabled_CheckBox.Text = "Bed Time Enabled";
+            this.BedTimeEnabled_CheckBox.UseVisualStyleBackColor = true;
+            // 
+            // PaySheet_GroupBox
+            // 
+            this.PaySheet_GroupBox.Controls.Add(this.PayUnit_Label);
+            this.PaySheet_GroupBox.Controls.Add(this.Pay_Label);
+            this.PaySheet_GroupBox.Controls.Add(this.HoursAfterMidnight_Label);
+            this.PaySheet_GroupBox.Controls.Add(this.HoursBedtimeToMidnight_Label);
+            this.PaySheet_GroupBox.Controls.Add(this.HoursBeforeBedtime_Label);
+            this.PaySheet_GroupBox.Controls.Add(this.Pay_TextBox);
+            this.PaySheet_GroupBox.Controls.Add(this.HoursAfterMidnight_TextBox);
+            this.PaySheet_GroupBox.Controls.Add(this.HoursBedTimeToMidnight_TextBox);
+            this.PaySheet_GroupBox.Controls.Add(this.HoursBeforeBedtime_TextBox);
+            this.PaySheet_GroupBox.Location = new System.Drawing.Point(31, 366);
+            this.PaySheet_GroupBox.Name = "PaySheet_GroupBox";
+            this.PaySheet_GroupBox.Size = new System.Drawing.Size(669, 131);
+            this.PaySheet_GroupBox.TabIndex = 8;
+            this.PaySheet_GroupBox.TabStop = false;
+            this.PaySheet_GroupBox.Text = "Pay Sheet";
+            // 
+            // Pay_Label
+            // 
+            this.Pay_Label.AutoSize = true;
+            this.Pay_Label.Location = new System.Drawing.Point(538, 41);
+            this.Pay_Label.Name = "Pay_Label";
+            this.Pay_Label.Size = new System.Drawing.Size(35, 20);
+            this.Pay_Label.TabIndex = 7;
+            this.Pay_Label.Text = "Pay";
+            // 
+            // HoursAfterMidnight_Label
+            // 
+            this.HoursAfterMidnight_Label.AutoSize = true;
+            this.HoursAfterMidnight_Label.Location = new System.Drawing.Point(360, 41);
+            this.HoursAfterMidnight_Label.Name = "HoursAfterMidnight_Label";
+            this.HoursAfterMidnight_Label.Size = new System.Drawing.Size(108, 20);
+            this.HoursAfterMidnight_Label.TabIndex = 6;
+            this.HoursAfterMidnight_Label.Text = "After Midnight";
+            // 
+            // HoursBedtimeToMidnight_Label
+            // 
+            this.HoursBedtimeToMidnight_Label.AutoSize = true;
+            this.HoursBedtimeToMidnight_Label.Location = new System.Drawing.Point(198, 41);
+            this.HoursBedtimeToMidnight_Label.Name = "HoursBedtimeToMidnight_Label";
+            this.HoursBedtimeToMidnight_Label.Size = new System.Drawing.Size(150, 20);
+            this.HoursBedtimeToMidnight_Label.TabIndex = 5;
+            this.HoursBedtimeToMidnight_Label.Text = "Bedtime to Midnight";
+            // 
+            // HoursBeforeBedtime_Label
+            // 
+            this.HoursBeforeBedtime_Label.AutoSize = true;
+            this.HoursBeforeBedtime_Label.Location = new System.Drawing.Point(34, 41);
+            this.HoursBeforeBedtime_Label.Name = "HoursBeforeBedtime_Label";
+            this.HoursBeforeBedtime_Label.Size = new System.Drawing.Size(120, 20);
+            this.HoursBeforeBedtime_Label.TabIndex = 4;
+            this.HoursBeforeBedtime_Label.Text = "Before Bedtime";
+            // 
+            // Pay_TextBox
+            // 
+            this.Pay_TextBox.Enabled = false;
+            this.Pay_TextBox.Location = new System.Drawing.Point(542, 71);
+            this.Pay_TextBox.Name = "Pay_TextBox";
+            this.Pay_TextBox.Size = new System.Drawing.Size(100, 26);
+            this.Pay_TextBox.TabIndex = 3;
+            // 
+            // HoursAfterMidnight_TextBox
+            // 
+            this.HoursAfterMidnight_TextBox.Enabled = false;
+            this.HoursAfterMidnight_TextBox.Location = new System.Drawing.Point(364, 71);
+            this.HoursAfterMidnight_TextBox.Name = "HoursAfterMidnight_TextBox";
+            this.HoursAfterMidnight_TextBox.Size = new System.Drawing.Size(100, 26);
+            this.HoursAfterMidnight_TextBox.TabIndex = 2;
+            // 
+            // HoursBedTimeToMidnight_TextBox
+            // 
+            this.HoursBedTimeToMidnight_TextBox.Enabled = false;
+            this.HoursBedTimeToMidnight_TextBox.Location = new System.Drawing.Point(202, 71);
+            this.HoursBedTimeToMidnight_TextBox.Name = "HoursBedTimeToMidnight_TextBox";
+            this.HoursBedTimeToMidnight_TextBox.Size = new System.Drawing.Size(100, 26);
+            this.HoursBedTimeToMidnight_TextBox.TabIndex = 1;
+            // 
+            // HoursBeforeBedtime_TextBox
+            // 
+            this.HoursBeforeBedtime_TextBox.Enabled = false;
+            this.HoursBeforeBedtime_TextBox.Location = new System.Drawing.Point(38, 71);
+            this.HoursBeforeBedtime_TextBox.Name = "HoursBeforeBedtime_TextBox";
+            this.HoursBeforeBedtime_TextBox.Size = new System.Drawing.Size(100, 26);
+            this.HoursBeforeBedtime_TextBox.TabIndex = 0;
+            // 
+            // PayUnit_Label
+            // 
+            this.PayUnit_Label.AutoSize = true;
+            this.PayUnit_Label.Location = new System.Drawing.Point(518, 74);
+            this.PayUnit_Label.Name = "PayUnit_Label";
+            this.PayUnit_Label.Size = new System.Drawing.Size(18, 20);
+            this.PayUnit_Label.TabIndex = 8;
+            this.PayUnit_Label.Text = "$";
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(755, 524);
+            this.Controls.Add(this.PaySheet_GroupBox);
+            this.Controls.Add(this.TimeCard_GroupBox);
+            this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.StartTimeHour_NumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartTimeMinute_NumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EndTimeHour_NumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EndTimeMinute_NumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BedTimeHour_NumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BedTimeMinute_NumericUpDown)).EndInit();
+            this.TimeCard_GroupBox.ResumeLayout(false);
+            this.TimeCard_GroupBox.PerformLayout();
+            this.PaySheet_GroupBox.ResumeLayout(false);
+            this.PaySheet_GroupBox.PerformLayout();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.NumericUpDown StartTimeHour_NumericUpDown;
+        private System.Windows.Forms.NumericUpDown StartTimeMinute_NumericUpDown;
+        private System.Windows.Forms.NumericUpDown EndTimeHour_NumericUpDown;
+        private System.Windows.Forms.NumericUpDown EndTimeMinute_NumericUpDown;
+        private System.Windows.Forms.NumericUpDown BedTimeHour_NumericUpDown;
+        private System.Windows.Forms.NumericUpDown BedTimeMinute_NumericUpDown;
+        private System.Windows.Forms.GroupBox TimeCard_GroupBox;
+        private System.Windows.Forms.Label BedTimeMinute_Label;
+        private System.Windows.Forms.Label BedTimeHour_Label;
+        private System.Windows.Forms.Label BedTime_Label;
+        private System.Windows.Forms.Label EndTimeMinute_Label;
+        private System.Windows.Forms.Label EndTimeHour_Label;
+        private System.Windows.Forms.Label EndTime_Label;
+        private System.Windows.Forms.Label StartTimeMinute_Label;
+        private System.Windows.Forms.Label StartTimeHour_Label;
+        private System.Windows.Forms.Label StartTime_Label;
+        private System.Windows.Forms.Button TimeCardSubmit_Button;
+        private System.Windows.Forms.CheckBox BedTimeEnabled_CheckBox;
+        private System.Windows.Forms.GroupBox PaySheet_GroupBox;
+        private System.Windows.Forms.Label Pay_Label;
+        private System.Windows.Forms.Label HoursAfterMidnight_Label;
+        private System.Windows.Forms.Label HoursBedtimeToMidnight_Label;
+        private System.Windows.Forms.Label HoursBeforeBedtime_Label;
+        private System.Windows.Forms.TextBox Pay_TextBox;
+        private System.Windows.Forms.TextBox HoursAfterMidnight_TextBox;
+        private System.Windows.Forms.TextBox HoursBedTimeToMidnight_TextBox;
+        private System.Windows.Forms.TextBox HoursBeforeBedtime_TextBox;
+        private System.Windows.Forms.Label PayUnit_Label;
     }
 }
 
