@@ -337,7 +337,7 @@
             this.Controls.Add(this.PaySheet_GroupBox);
             this.Controls.Add(this.TimeCard_GroupBox);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Babysitter Pay Calculator";
             ((System.ComponentModel.ISupportInitialize)(this.StartTimeHour_NumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartTimeMinute_NumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EndTimeHour_NumericUpDown)).EndInit();
