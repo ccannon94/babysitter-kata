@@ -35,6 +35,9 @@
             this.BedTimeHour_NumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.BedTimeMinute_NumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.TimeCard_GroupBox = new System.Windows.Forms.GroupBox();
+            this.BedTime_AMPM_ComboBox = new System.Windows.Forms.ComboBox();
+            this.EndTime_AMPM_ComboBox = new System.Windows.Forms.ComboBox();
+            this.StartTime_AMPM_ComboBox = new System.Windows.Forms.ComboBox();
             this.BedTimeMinute_Label = new System.Windows.Forms.Label();
             this.BedTimeHour_Label = new System.Windows.Forms.Label();
             this.BedTime_Label = new System.Windows.Forms.Label();
@@ -56,9 +59,6 @@
             this.HoursAfterMidnight_TextBox = new System.Windows.Forms.TextBox();
             this.HoursBedTimeToMidnight_TextBox = new System.Windows.Forms.TextBox();
             this.HoursBeforeBedtime_TextBox = new System.Windows.Forms.TextBox();
-            this.StartTime_AMPM_ComboBox = new System.Windows.Forms.ComboBox();
-            this.EndTime_AMPM_ComboBox = new System.Windows.Forms.ComboBox();
-            this.BedTime_AMPM_ComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.StartTimeHour_NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartTimeMinute_NumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EndTimeHour_NumericUpDown)).BeginInit();
@@ -72,13 +72,33 @@
             // StartTimeHour_NumericUpDown
             // 
             this.StartTimeHour_NumericUpDown.Location = new System.Drawing.Point(38, 77);
+            this.StartTimeHour_NumericUpDown.Maximum = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
+            this.StartTimeHour_NumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.StartTimeHour_NumericUpDown.Name = "StartTimeHour_NumericUpDown";
             this.StartTimeHour_NumericUpDown.Size = new System.Drawing.Size(120, 26);
             this.StartTimeHour_NumericUpDown.TabIndex = 1;
+            this.StartTimeHour_NumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // StartTimeMinute_NumericUpDown
             // 
             this.StartTimeMinute_NumericUpDown.Location = new System.Drawing.Point(248, 77);
+            this.StartTimeMinute_NumericUpDown.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
             this.StartTimeMinute_NumericUpDown.Name = "StartTimeMinute_NumericUpDown";
             this.StartTimeMinute_NumericUpDown.Size = new System.Drawing.Size(120, 26);
             this.StartTimeMinute_NumericUpDown.TabIndex = 2;
@@ -86,13 +106,33 @@
             // EndTimeHour_NumericUpDown
             // 
             this.EndTimeHour_NumericUpDown.Location = new System.Drawing.Point(38, 143);
+            this.EndTimeHour_NumericUpDown.Maximum = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
+            this.EndTimeHour_NumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.EndTimeHour_NumericUpDown.Name = "EndTimeHour_NumericUpDown";
             this.EndTimeHour_NumericUpDown.Size = new System.Drawing.Size(120, 26);
             this.EndTimeHour_NumericUpDown.TabIndex = 3;
+            this.EndTimeHour_NumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // EndTimeMinute_NumericUpDown
             // 
             this.EndTimeMinute_NumericUpDown.Location = new System.Drawing.Point(248, 143);
+            this.EndTimeMinute_NumericUpDown.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
             this.EndTimeMinute_NumericUpDown.Name = "EndTimeMinute_NumericUpDown";
             this.EndTimeMinute_NumericUpDown.Size = new System.Drawing.Size(120, 26);
             this.EndTimeMinute_NumericUpDown.TabIndex = 4;
@@ -100,13 +140,33 @@
             // BedTimeHour_NumericUpDown
             // 
             this.BedTimeHour_NumericUpDown.Location = new System.Drawing.Point(38, 216);
+            this.BedTimeHour_NumericUpDown.Maximum = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
+            this.BedTimeHour_NumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.BedTimeHour_NumericUpDown.Name = "BedTimeHour_NumericUpDown";
             this.BedTimeHour_NumericUpDown.Size = new System.Drawing.Size(120, 26);
             this.BedTimeHour_NumericUpDown.TabIndex = 5;
+            this.BedTimeHour_NumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // BedTimeMinute_NumericUpDown
             // 
             this.BedTimeMinute_NumericUpDown.Location = new System.Drawing.Point(248, 216);
+            this.BedTimeMinute_NumericUpDown.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
             this.BedTimeMinute_NumericUpDown.Name = "BedTimeMinute_NumericUpDown";
             this.BedTimeMinute_NumericUpDown.Size = new System.Drawing.Size(120, 26);
             this.BedTimeMinute_NumericUpDown.TabIndex = 6;
@@ -139,6 +199,30 @@
             this.TimeCard_GroupBox.TabIndex = 7;
             this.TimeCard_GroupBox.TabStop = false;
             this.TimeCard_GroupBox.Text = "Time Card";
+            // 
+            // BedTime_AMPM_ComboBox
+            // 
+            this.BedTime_AMPM_ComboBox.FormattingEnabled = true;
+            this.BedTime_AMPM_ComboBox.Location = new System.Drawing.Point(463, 210);
+            this.BedTime_AMPM_ComboBox.Name = "BedTime_AMPM_ComboBox";
+            this.BedTime_AMPM_ComboBox.Size = new System.Drawing.Size(121, 28);
+            this.BedTime_AMPM_ComboBox.TabIndex = 20;
+            // 
+            // EndTime_AMPM_ComboBox
+            // 
+            this.EndTime_AMPM_ComboBox.FormattingEnabled = true;
+            this.EndTime_AMPM_ComboBox.Location = new System.Drawing.Point(463, 141);
+            this.EndTime_AMPM_ComboBox.Name = "EndTime_AMPM_ComboBox";
+            this.EndTime_AMPM_ComboBox.Size = new System.Drawing.Size(121, 28);
+            this.EndTime_AMPM_ComboBox.TabIndex = 19;
+            // 
+            // StartTime_AMPM_ComboBox
+            // 
+            this.StartTime_AMPM_ComboBox.FormattingEnabled = true;
+            this.StartTime_AMPM_ComboBox.Location = new System.Drawing.Point(463, 79);
+            this.StartTime_AMPM_ComboBox.Name = "StartTime_AMPM_ComboBox";
+            this.StartTime_AMPM_ComboBox.Size = new System.Drawing.Size(121, 28);
+            this.StartTime_AMPM_ComboBox.TabIndex = 18;
             // 
             // BedTimeMinute_Label
             // 
@@ -334,30 +418,6 @@
             this.HoursBeforeBedtime_TextBox.Name = "HoursBeforeBedtime_TextBox";
             this.HoursBeforeBedtime_TextBox.Size = new System.Drawing.Size(100, 26);
             this.HoursBeforeBedtime_TextBox.TabIndex = 0;
-            // 
-            // StartTime_AMPM_ComboBox
-            // 
-            this.StartTime_AMPM_ComboBox.FormattingEnabled = true;
-            this.StartTime_AMPM_ComboBox.Location = new System.Drawing.Point(463, 79);
-            this.StartTime_AMPM_ComboBox.Name = "StartTime_AMPM_ComboBox";
-            this.StartTime_AMPM_ComboBox.Size = new System.Drawing.Size(121, 28);
-            this.StartTime_AMPM_ComboBox.TabIndex = 18;
-            // 
-            // EndTime_AMPM_ComboBox
-            // 
-            this.EndTime_AMPM_ComboBox.FormattingEnabled = true;
-            this.EndTime_AMPM_ComboBox.Location = new System.Drawing.Point(463, 141);
-            this.EndTime_AMPM_ComboBox.Name = "EndTime_AMPM_ComboBox";
-            this.EndTime_AMPM_ComboBox.Size = new System.Drawing.Size(121, 28);
-            this.EndTime_AMPM_ComboBox.TabIndex = 19;
-            // 
-            // BedTime_AMPM_ComboBox
-            // 
-            this.BedTime_AMPM_ComboBox.FormattingEnabled = true;
-            this.BedTime_AMPM_ComboBox.Location = new System.Drawing.Point(463, 210);
-            this.BedTime_AMPM_ComboBox.Name = "BedTime_AMPM_ComboBox";
-            this.BedTime_AMPM_ComboBox.Size = new System.Drawing.Size(121, 28);
-            this.BedTime_AMPM_ComboBox.TabIndex = 20;
             // 
             // Form1
             // 
