@@ -21,18 +21,55 @@ namespace BabysitterKata
         {
             TwentyFourHourTime startTime;
             TwentyFourHourTime endTime;
-            TwentyFourHourTime bedtime;
+            TwentyFourHourTime bedTime;
+            BabysitterTimeCard timeCard;
+            BabysitterPaySheet paySheet;
 
-            switch ((TIME_OF_DAY)StartTime_AMPM_ComboBox.SelectedValue)
+            startTime = InitializeTime((TIME_OF_DAY)StartTime_AMPM_ComboBox.SelectedItem, StartTimeHour_NumericUpDown.Value, StartTimeMinute_NumericUpDown.Value);
+            endTime = InitializeTime((TIME_OF_DAY)EndTime_AMPM_ComboBox.SelectedItem, EndTimeHour_NumericUpDown.Value, EndTimeMinute_NumericUpDown.Value);
+
+            if (BedTimeEnabled_CheckBox.Checked)
             {
-                case TIME_OF_DAY.AM:
-                    startTime = InitializeAMTime(StartTimeHour_NumericUpDown.Value, StartTimeMinute_NumericUpDown.Value);
-                    break;
-                case TIME_OF_DAY.PM:
-                    startTime = InitializePMTime(StartTimeHour_NumericUpDown.Value, StartTimeMinute_NumericUpDown.Value);
-                    break;
+                bedTime = InitializeTime((TIME_OF_DAY)BedTime_AMPM_ComboBox.SelectedItem, BedTimeHour_NumericUpDown.Value, BedTimeMinute_NumericUpDown.Value);
+                timeCard = new BabysitterTimeCard(startTime, endTime, bedTime);
+            }
+            else
+            {
+                timeCard = new BabysitterTimeCard(startTime, endTime);
+            }
+                
+            if (timeCard.CalculateHoursAfterMidnight() != 0)
+            {
+                paySheet = new BabysitterPaySheet(timeCard.CalculateHoursBeforeBedtime(), timeCard.CalculateHoursBetweenBedtimeAndMidnight(), timeCard.CalculateHoursAfterMidnight());
+            }
+            else
+            {
+                paySheet = new BabysitterPaySheet(timeCard.CalculateHoursBeforeBedtime(), timeCard.CalculateHoursBetweenBedtimeAndMidnight());
             }
 
+            UpdatePaysheet(timeCard, paySheet);
+        }
+
+        private void UpdatePaysheet(BabysitterTimeCard timeCard, BabysitterPaySheet paySheet)
+        {
+            HoursBeforeBedtime_TextBox.Text = timeCard.CalculateHoursBeforeBedtime().ToString();
+            HoursBedTimeToMidnight_TextBox.Text = timeCard.CalculateHoursBetweenBedtimeAndMidnight().ToString();
+            HoursAfterMidnight_TextBox.Text = timeCard.CalculateHoursAfterMidnight().ToString();
+
+            Pay_TextBox.Text = paySheet.Pay.ToString();
+        }
+
+        private TwentyFourHourTime InitializeTime(TIME_OF_DAY tod, decimal hour, decimal minute)
+        {
+            switch (tod)
+            {
+                case TIME_OF_DAY.AM:
+                    return InitializeAMTime(hour, minute);
+                case TIME_OF_DAY.PM:
+                    return InitializePMTime(hour, minute);
+                default:
+                    throw new InvalidEnumArgumentException("No Time of Day Selected");
+            }
         }
 
         private TwentyFourHourTime InitializeAMTime(decimal hour, decimal minute)
