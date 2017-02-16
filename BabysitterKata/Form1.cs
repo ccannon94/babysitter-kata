@@ -19,7 +19,35 @@ namespace BabysitterKata
 
         private void TimeCardSubmit_Button_Click(object sender, EventArgs e)
         {
+            TwentyFourHourTime startTime;
+            TwentyFourHourTime endTime;
+            TwentyFourHourTime bedtime;
 
+            switch ((TIME_OF_DAY)StartTime_AMPM_ComboBox.SelectedValue)
+            {
+                case TIME_OF_DAY.AM:
+                    startTime = InitializeAMTime(StartTimeHour_NumericUpDown.Value, StartTimeMinute_NumericUpDown.Value);
+                    break;
+                case TIME_OF_DAY.PM:
+                    startTime = InitializePMTime(StartTimeHour_NumericUpDown.Value, StartTimeMinute_NumericUpDown.Value);
+                    break;
+            }
+
+        }
+
+        private TwentyFourHourTime InitializeAMTime(decimal hour, decimal minute)
+        {
+            return new TwentyFourHourTime((int)hour, (int)minute);
+        }
+
+        private TwentyFourHourTime InitializePMTime(decimal hour, decimal minute)
+        {
+            int realHour = (int)hour + 12;
+
+            if (realHour == 24)
+                realHour = 0;
+
+            return new TwentyFourHourTime((int)hour, (int)minute);
         }
 
         private void BedTimeEnabled_CheckBox_CheckedChanged(object sender, EventArgs e)
