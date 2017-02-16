@@ -202,30 +202,45 @@
             // 
             // BedTime_AMPM_ComboBox
             // 
+            this.BedTime_AMPM_ComboBox.DataSource = new BabysitterKata.TIME_OF_DAY[] {
+        BabysitterKata.TIME_OF_DAY.AM,
+        BabysitterKata.TIME_OF_DAY.PM};
             this.BedTime_AMPM_ComboBox.FormattingEnabled = true;
+            this.BedTime_AMPM_ComboBox.Items.AddRange(new object[] {
+            BabysitterKata.TIME_OF_DAY.AM,
+            BabysitterKata.TIME_OF_DAY.PM});
             this.BedTime_AMPM_ComboBox.Location = new System.Drawing.Point(463, 210);
             this.BedTime_AMPM_ComboBox.Name = "BedTime_AMPM_ComboBox";
             this.BedTime_AMPM_ComboBox.Size = new System.Drawing.Size(121, 28);
             this.BedTime_AMPM_ComboBox.TabIndex = 20;
-            this.BedTime_AMPM_ComboBox.DataSource = System.Enum.GetValues(typeof(TIME_OF_DAY));
             // 
             // EndTime_AMPM_ComboBox
             // 
+            this.EndTime_AMPM_ComboBox.DataSource = new BabysitterKata.TIME_OF_DAY[] {
+        BabysitterKata.TIME_OF_DAY.AM,
+        BabysitterKata.TIME_OF_DAY.PM};
             this.EndTime_AMPM_ComboBox.FormattingEnabled = true;
+            this.EndTime_AMPM_ComboBox.Items.AddRange(new object[] {
+            BabysitterKata.TIME_OF_DAY.AM,
+            BabysitterKata.TIME_OF_DAY.PM});
             this.EndTime_AMPM_ComboBox.Location = new System.Drawing.Point(463, 141);
             this.EndTime_AMPM_ComboBox.Name = "EndTime_AMPM_ComboBox";
             this.EndTime_AMPM_ComboBox.Size = new System.Drawing.Size(121, 28);
             this.EndTime_AMPM_ComboBox.TabIndex = 19;
-            this.EndTime_AMPM_ComboBox.DataSource = System.Enum.GetValues(typeof(TIME_OF_DAY));
             // 
             // StartTime_AMPM_ComboBox
             // 
+            this.StartTime_AMPM_ComboBox.DataSource = new BabysitterKata.TIME_OF_DAY[] {
+        BabysitterKata.TIME_OF_DAY.AM,
+        BabysitterKata.TIME_OF_DAY.PM};
             this.StartTime_AMPM_ComboBox.FormattingEnabled = true;
+            this.StartTime_AMPM_ComboBox.Items.AddRange(new object[] {
+            BabysitterKata.TIME_OF_DAY.AM,
+            BabysitterKata.TIME_OF_DAY.PM});
             this.StartTime_AMPM_ComboBox.Location = new System.Drawing.Point(463, 79);
             this.StartTime_AMPM_ComboBox.Name = "StartTime_AMPM_ComboBox";
             this.StartTime_AMPM_ComboBox.Size = new System.Drawing.Size(121, 28);
             this.StartTime_AMPM_ComboBox.TabIndex = 18;
-            this.StartTime_AMPM_ComboBox.DataSource = System.Enum.GetValues(typeof(TIME_OF_DAY));
             // 
             // BedTimeMinute_Label
             // 
@@ -327,6 +342,7 @@
             this.BedTimeEnabled_CheckBox.TabIndex = 7;
             this.BedTimeEnabled_CheckBox.Text = "Bed Time Enabled";
             this.BedTimeEnabled_CheckBox.UseVisualStyleBackColor = true;
+            this.BedTimeEnabled_CheckBox.CheckedChanged += new System.EventHandler(this.BedTimeEnabled_CheckBox_CheckedChanged);
             // 
             // PaySheet_GroupBox
             // 

@@ -21,5 +21,21 @@ namespace BabysitterKata
         {
 
         }
+
+        private void BedTimeEnabled_CheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (BedTimeEnabled_CheckBox.Checked)
+            {
+                BedTimeHour_NumericUpDown.Enabled = true;
+                BedTimeMinute_NumericUpDown.Enabled = true;
+                BedTime_AMPM_ComboBox.Enabled = true;
+            }
+            else
+            {
+                BedTimeHour_NumericUpDown.Enabled = false;
+                BedTimeMinute_NumericUpDown.Enabled = false;
+                BedTime_AMPM_ComboBox.Enabled = false;
+            }
+        }
     }
 }
