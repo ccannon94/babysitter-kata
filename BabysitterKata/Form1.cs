@@ -16,5 +16,10 @@ namespace BabysitterKata
         {
             InitializeComponent();
         }
+
+        private void TimeCardSubmit_Button_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

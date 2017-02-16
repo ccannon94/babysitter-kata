@@ -207,6 +207,7 @@
             this.BedTime_AMPM_ComboBox.Name = "BedTime_AMPM_ComboBox";
             this.BedTime_AMPM_ComboBox.Size = new System.Drawing.Size(121, 28);
             this.BedTime_AMPM_ComboBox.TabIndex = 20;
+            this.BedTime_AMPM_ComboBox.DataSource = System.Enum.GetValues(typeof(TIME_OF_DAY));
             // 
             // EndTime_AMPM_ComboBox
             // 
@@ -215,6 +216,7 @@
             this.EndTime_AMPM_ComboBox.Name = "EndTime_AMPM_ComboBox";
             this.EndTime_AMPM_ComboBox.Size = new System.Drawing.Size(121, 28);
             this.EndTime_AMPM_ComboBox.TabIndex = 19;
+            this.EndTime_AMPM_ComboBox.DataSource = System.Enum.GetValues(typeof(TIME_OF_DAY));
             // 
             // StartTime_AMPM_ComboBox
             // 
@@ -223,6 +225,7 @@
             this.StartTime_AMPM_ComboBox.Name = "StartTime_AMPM_ComboBox";
             this.StartTime_AMPM_ComboBox.Size = new System.Drawing.Size(121, 28);
             this.StartTime_AMPM_ComboBox.TabIndex = 18;
+            this.StartTime_AMPM_ComboBox.DataSource = System.Enum.GetValues(typeof(TIME_OF_DAY));
             // 
             // BedTimeMinute_Label
             // 
@@ -313,6 +316,7 @@
             this.TimeCardSubmit_Button.TabIndex = 8;
             this.TimeCardSubmit_Button.Text = "Submit Time Card";
             this.TimeCardSubmit_Button.UseVisualStyleBackColor = true;
+            this.TimeCardSubmit_Button.Click += new System.EventHandler(this.TimeCardSubmit_Button_Click);
             // 
             // BedTimeEnabled_CheckBox
             // 
