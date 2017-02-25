@@ -202,13 +202,8 @@
             // 
             // BedTime_AMPM_ComboBox
             // 
-            this.BedTime_AMPM_ComboBox.DataSource = new BabysitterKata.TIME_OF_DAY[] {
-        BabysitterKata.TIME_OF_DAY.AM,
-        BabysitterKata.TIME_OF_DAY.PM};
+            this.BedTime_AMPM_ComboBox.DataSource = System.Enum.GetValues(typeof(TIME_OF_DAY));
             this.BedTime_AMPM_ComboBox.FormattingEnabled = true;
-            this.BedTime_AMPM_ComboBox.Items.AddRange(new object[] {
-            BabysitterKata.TIME_OF_DAY.AM,
-            BabysitterKata.TIME_OF_DAY.PM});
             this.BedTime_AMPM_ComboBox.Location = new System.Drawing.Point(463, 210);
             this.BedTime_AMPM_ComboBox.Name = "BedTime_AMPM_ComboBox";
             this.BedTime_AMPM_ComboBox.Size = new System.Drawing.Size(121, 28);
@@ -216,13 +211,8 @@
             // 
             // EndTime_AMPM_ComboBox
             // 
-            this.EndTime_AMPM_ComboBox.DataSource = new BabysitterKata.TIME_OF_DAY[] {
-        BabysitterKata.TIME_OF_DAY.AM,
-        BabysitterKata.TIME_OF_DAY.PM};
+            this.EndTime_AMPM_ComboBox.DataSource = System.Enum.GetValues(typeof(TIME_OF_DAY));
             this.EndTime_AMPM_ComboBox.FormattingEnabled = true;
-            this.EndTime_AMPM_ComboBox.Items.AddRange(new object[] {
-            BabysitterKata.TIME_OF_DAY.AM,
-            BabysitterKata.TIME_OF_DAY.PM});
             this.EndTime_AMPM_ComboBox.Location = new System.Drawing.Point(463, 141);
             this.EndTime_AMPM_ComboBox.Name = "EndTime_AMPM_ComboBox";
             this.EndTime_AMPM_ComboBox.Size = new System.Drawing.Size(121, 28);
@@ -230,13 +220,8 @@
             // 
             // StartTime_AMPM_ComboBox
             // 
-            this.StartTime_AMPM_ComboBox.DataSource = new BabysitterKata.TIME_OF_DAY[] {
-        BabysitterKata.TIME_OF_DAY.AM,
-        BabysitterKata.TIME_OF_DAY.PM};
+            this.StartTime_AMPM_ComboBox.DataSource = System.Enum.GetValues(typeof(TIME_OF_DAY));
             this.StartTime_AMPM_ComboBox.FormattingEnabled = true;
-            this.StartTime_AMPM_ComboBox.Items.AddRange(new object[] {
-            BabysitterKata.TIME_OF_DAY.AM,
-            BabysitterKata.TIME_OF_DAY.PM});
             this.StartTime_AMPM_ComboBox.Location = new System.Drawing.Point(463, 79);
             this.StartTime_AMPM_ComboBox.Name = "StartTime_AMPM_ComboBox";
             this.StartTime_AMPM_ComboBox.Size = new System.Drawing.Size(121, 28);
