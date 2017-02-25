@@ -23,13 +23,14 @@ namespace BabysitterKata
         /// The number of hours since midnight.
         /// </summary>
         public int Hours { get{ return _hours; } }
+
         /// <summary>
         /// The number of minutes since the last hour.
         /// </summary>
         public int Minutes { get { return _minutes; } }
 
         /// <summary>
-        /// Creates a TwentyFourHourTime.
+        /// Creates a <see cref="TwentyFourHourTime"/>.
         /// </summary>
         /// <param name="hours">
         /// The number of hours since midnight.
@@ -66,9 +67,9 @@ namespace BabysitterKata
         }
 
         /// <summary>
-        /// Compares this instance to a specific object and returns an indication of their relative values.
+        /// Compares this instance to a specific <see cref="Object"/>t and returns an indication of their relative values.
         /// </summary>
-        /// <param name="obj">Instance of any subclass of Object to be compared.</param>
+        /// <param name="obj">Instance of any subclass of <see cref="Object"/> to be compared.</param>
         /// <returns>
         /// Relative indicator of value as follows:
         /// -1: This instance is before obj chronologically
@@ -86,9 +87,9 @@ namespace BabysitterKata
         }
 
         /// <summary>
-        /// Compares this instance to a specific TwentyFourHourTime and returns an indication of their relative values.
+        /// Compares this instance to a specific <see cref="TwentyFourHourTime"/> and returns an indication of their relative values.
         /// </summary>
-        /// <param name="other">Instance of TwentyFourHourTime to be compared.</param>
+        /// <param name="other">Instance of <see cref="TwentyFourHourTime"/> to be compared.</param>
         /// <returns>
         /// -1: This instance is before obj chronologically
         /// 0: This instance is the same point in time as obj
@@ -102,9 +103,9 @@ namespace BabysitterKata
         }
 
         /// <summary>
-        /// Indicates equality between this and another specific object.
+        /// Indicates equality between this and another specific <see cref="Object"/>.
         /// </summary>
-        /// <param name="obj">Instance of any subclass of Object to be compared.</param>
+        /// <param name="obj">Instance of any subclass of <see cref="Object"/> to be compared.</param>
         /// <returns>True if equal, else false</returns>
         public bool Equals(object obj)
         {
@@ -117,15 +118,20 @@ namespace BabysitterKata
         }
 
         /// <summary>
-        /// Indicates equality between this and another specific TwentyFourHourTime
+        /// Indicates equality between this and another specific <see cref="TwentyFourHourTime"/>
         /// </summary>
-        /// <param name="other">Instance of TwentyFourHourTime to be compared.</param>
+        /// <param name="other">Instance of <see cref="TwentyFourHourTime"/> to be compared.</param>
         /// <returns>True if equal, else false</returns>
         public bool Equals(TwentyFourHourTime other)
         {
             return this.Hours.Equals(other.Hours) && this.Minutes.Equals(other.Minutes);
         }
 
+        /// <summary>
+        /// Calculates the difference between this and another <see cref="TwentyFourHourTime"/>
+        /// </summary>
+        /// <param name="other"><see cref="TwentyFourHourTime"/> to subtract</param>
+        /// <returns>Result of subtraction</returns>
         public double Minus(TwentyFourHourTime other)
         {
             int otherHours = other.Hours;
@@ -151,6 +157,11 @@ namespace BabysitterKata
             return hours + minutes / 60;
         }
 
+        /// <summary>
+        /// Calculates the sum of this and another <see cref="TwentyFourHourTime"/>
+        /// </summary>
+        /// <param name="other"><see cref="TwentyFourHourTime"/> to add</param>
+        /// <returns>Result of addition</returns>
         public double Plus(TwentyFourHourTime other)
         {
             double hours = this.Hours + other.Hours;
