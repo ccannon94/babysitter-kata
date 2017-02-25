@@ -28,15 +28,8 @@ namespace BabysitterKata
             startTime = InitializeTime((TIME_OF_DAY)StartTime_AMPM_ComboBox.SelectedItem, StartTimeHour_NumericUpDown.Value, StartTimeMinute_NumericUpDown.Value);
             endTime = InitializeTime((TIME_OF_DAY)EndTime_AMPM_ComboBox.SelectedItem, EndTimeHour_NumericUpDown.Value, EndTimeMinute_NumericUpDown.Value);
 
-            if (BedTimeEnabled_CheckBox.Checked)
-            {
-                bedTime = InitializeTime((TIME_OF_DAY)BedTime_AMPM_ComboBox.SelectedItem, BedTimeHour_NumericUpDown.Value, BedTimeMinute_NumericUpDown.Value);
-                timeCard = new BabysitterTimeCard(startTime, endTime, bedTime);
-            }
-            else
-            {
-                timeCard = new BabysitterTimeCard(startTime, endTime);
-            }
+            bedTime = InitializeTime((TIME_OF_DAY)BedTime_AMPM_ComboBox.SelectedItem, BedTimeHour_NumericUpDown.Value, BedTimeMinute_NumericUpDown.Value);
+            timeCard = new BabysitterTimeCard(startTime, endTime, bedTime);
                 
             if (timeCard.CalculateHoursAfterMidnight() != 0)
             {
@@ -85,27 +78,6 @@ namespace BabysitterKata
                 realHour = 0;
 
             return new TwentyFourHourTime(realHour, (int)minute);
-        }
-
-        private void BedTimeEnabled_CheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            bedTimeChecker();
-        }
-
-        private void bedTimeChecker()
-        {
-            if (BedTimeEnabled_CheckBox.Checked)
-            {
-                BedTimeHour_NumericUpDown.Enabled = true;
-                BedTimeMinute_NumericUpDown.Enabled = true;
-                BedTime_AMPM_ComboBox.Enabled = true;
-            }
-            else
-            {
-                BedTimeHour_NumericUpDown.Enabled = false;
-                BedTimeMinute_NumericUpDown.Enabled = false;
-                BedTime_AMPM_ComboBox.Enabled = false;
-            }
         }
     }
 }
