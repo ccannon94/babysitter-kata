@@ -29,18 +29,25 @@ namespace BabysitterKata
             endTime = InitializeTime((TIME_OF_DAY)EndTime_AMPM_ComboBox.SelectedItem, EndTimeHour_NumericUpDown.Value, EndTimeMinute_NumericUpDown.Value);
 
             bedTime = InitializeTime((TIME_OF_DAY)BedTime_AMPM_ComboBox.SelectedItem, BedTimeHour_NumericUpDown.Value, BedTimeMinute_NumericUpDown.Value);
-            timeCard = new BabysitterTimeCard(startTime, endTime, bedTime);
-                
-            if (timeCard.CalculateHoursAfterMidnight() != 0)
+            try
             {
-                paySheet = new BabysitterPaySheet(timeCard.CalculateHoursBeforeBedtime(), timeCard.CalculateHoursBetweenBedtimeAndMidnight(), timeCard.CalculateHoursAfterMidnight());
-            }
-            else
-            {
-                paySheet = new BabysitterPaySheet(timeCard.CalculateHoursBeforeBedtime(), timeCard.CalculateHoursBetweenBedtimeAndMidnight());
-            }
+                timeCard = new BabysitterTimeCard(startTime, endTime, bedTime);
 
-            UpdatePaysheet(timeCard, paySheet);
+                if (timeCard.CalculateHoursAfterMidnight() != 0)
+                {
+                    paySheet = new BabysitterPaySheet(timeCard.CalculateHoursBeforeBedtime(), timeCard.CalculateHoursBetweenBedtimeAndMidnight(), timeCard.CalculateHoursAfterMidnight());
+                }
+                else
+                {
+                    paySheet = new BabysitterPaySheet(timeCard.CalculateHoursBeforeBedtime(), timeCard.CalculateHoursBetweenBedtimeAndMidnight());
+                }
+
+                UpdatePaysheet(timeCard, paySheet);
+            }
+            catch(ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Time Sheet Error");
+            }
         }
 
         private void UpdatePaysheet(BabysitterTimeCard timeCard, BabysitterPaySheet paySheet)
