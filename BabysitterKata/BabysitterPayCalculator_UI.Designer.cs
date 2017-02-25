@@ -1,6 +1,6 @@
 ﻿namespace BabysitterKata
 {
-    partial class Form1
+    partial class BabysitterPayCalculator_UI
     {
         /// <summary>
         /// Required designer variable.
