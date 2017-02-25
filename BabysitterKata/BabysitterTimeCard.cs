@@ -37,22 +37,22 @@ namespace BabysitterKata
         /// <summary>
         /// The time the babysitting shift ended.
         /// Valid Range: 17:00 - 04:00
-        /// Must come after StartTime
+        /// Must come after <see cref="StartTime"/>
         /// </summary>
         public TwentyFourHourTime EndTime { get { return _endTime; } }
 
 		/// <summary>
 		/// The time that the child went to bed.
 		/// Valid Range: 17:00 - 04:00
-		/// Must fall between StartTime and EndTime
+		/// Must fall between <see cref="StartTime"/> and <see cref="EndTime"/>
 		/// </summary>
 		public TwentyFourHourTime BedTime { get { return _bedTime; } }
 
         /// <summary>
-        /// The only constructor for a TimeCard must include a start and an end time.
+        /// This constructor for a TimeCard must include a start and an end time.
         /// </summary>
         /// <param name="startTime">Time shift began, valid range: 17:00 - 04:00</param>
-        /// <param name="endTime">Time shift ended, valid range: 17:00 - 04:00, must come after startTime</param>
+        /// <param name="endTime">Time shift ended, valid range: 17:00 - 04:00, must come after <see cref="StartTime"/></param>
         public BabysitterTimeCard(TwentyFourHourTime startTime, TwentyFourHourTime endTime)
         {
             if (StartTimeIsValid(startTime))
@@ -64,6 +64,12 @@ namespace BabysitterKata
                 _endTime = endTime;
         }
 
+        /// <summary>
+        /// This constructor for a TimeCard must include a start time, an end time, and a bed time.
+        /// </summary>
+        /// <param name="startTime">Time shift began, valid range: 17:00 - 4:00</param>
+        /// <param name="endTime">Time shift ended, valid range: 17:00 - 04:00, must come after <see cref="StartTime"/></param>
+        /// <param name="bedTime">Time child went to bed, valid range: 17:00 - 04:00, must come between <see cref="StartTime"/> and <see cref="EndTime"/></param>
         public BabysitterTimeCard(TwentyFourHourTime startTime, TwentyFourHourTime endTime, TwentyFourHourTime bedTime)
         {
             if (StartTimeIsValid(startTime))
@@ -85,7 +91,7 @@ namespace BabysitterKata
         /// <summary>
         /// Calculate total time of a shift.
         /// </summary>
-        /// <returns>Double representing the total time of a shift in hours</returns>
+        /// <returns><see cref="double"/> representing the total time of a shift in hours</returns>
         public double CalculateTotalTime()
         {
             double hours = _endTime.Hours - _startTime.Hours;
@@ -93,6 +99,10 @@ namespace BabysitterKata
             return hours + minutes / 60;
         }
 
+        /// <summary>
+        /// Calculates hours worked before bedtime.
+        /// </summary>
+        /// <returns><see cref="int"/> representing the hours worked before bed, to the nearest hour</returns>
         public int CalculateHoursBeforeBedtime()
         {
             switch (_startTimePeriod)
@@ -106,6 +116,10 @@ namespace BabysitterKata
             }
         }
 
+        /// <summary>
+        /// Calculates hours worked before midnight, after bedtime.
+        /// </summary>
+        /// <returns><see cref="int"/> representing the hours worked before bed, to the nearest hour</returns>
 		public int CalculateHoursBetweenBedtimeAndMidnight()
 		{
 			switch (_bedTimePeriod)
@@ -119,6 +133,10 @@ namespace BabysitterKata
 			}
 		}	
 
+        /// <summary>
+        /// Calculates hours worked afer midnight.
+        /// </summary>
+        /// <returns><see cref="int"/> representing the hours worked after midnight, to the nearest hour</returns>
         public int CalculateHoursAfterMidnight()
         {
             switch (_endTimePeriod)
