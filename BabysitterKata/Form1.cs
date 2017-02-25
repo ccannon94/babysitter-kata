@@ -84,7 +84,7 @@ namespace BabysitterKata
             if (realHour == 24)
                 realHour = 0;
 
-            return new TwentyFourHourTime((int)hour, (int)minute);
+            return new TwentyFourHourTime(realHour, (int)minute);
         }
 
         private void BedTimeEnabled_CheckBox_CheckedChanged(object sender, EventArgs e)
