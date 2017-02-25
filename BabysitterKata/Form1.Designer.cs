@@ -445,6 +445,8 @@
             this.PaySheet_GroupBox.PerformLayout();
             this.ResumeLayout(false);
 
+            this.bedTimeChecker();
+
         }
 
         #endregion

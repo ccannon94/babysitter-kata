@@ -89,6 +89,11 @@ namespace BabysitterKata
 
         private void BedTimeEnabled_CheckBox_CheckedChanged(object sender, EventArgs e)
         {
+            bedTimeChecker();
+        }
+
+        private void bedTimeChecker()
+        {
             if (BedTimeEnabled_CheckBox.Checked)
             {
                 BedTimeHour_NumericUpDown.Enabled = true;
