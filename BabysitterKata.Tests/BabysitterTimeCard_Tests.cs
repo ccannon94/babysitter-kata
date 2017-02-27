@@ -65,10 +65,10 @@ namespace BabysitterKata.Tests
 		}
 
 		[TestCase(17, 25, 17, 0)]
-		[TestCase(0, 43, 23, 42)]
 		[TestCase(22, 32, 19, 15)]
-		[TestCase(02, 15, 0, 0)]
-		[TestCase(03, 59, 0, 15)]
+        [TestCase(23, 39, 17, 15)]
+        [TestCase(19, 00, 18, 00)]
+        [TestCase(20, 00, 17, 00)]
 		public void BabySittertimeCard_GivenEndTimeBeforeStartTime_ThrowsArgumentException(int startTimeHours, int startTimeMinutes, int endTimeHours, int endTimeMinutes)
 		{
 			TwentyFourHourTime startTime = new TwentyFourHourTime(startTimeHours, startTimeMinutes);
