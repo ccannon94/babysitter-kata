@@ -128,7 +128,9 @@ namespace BabysitterKata
 					return 0;
 					break;
 				default:
-					return (int) Math.Round(ONE_MINUTE_TO_MIDNIGHT.Minus(_bedTime) + (1.0/60.0));
+                    if(BabysitterWorksPastMidnight())
+					    return (int) Math.Round(ONE_MINUTE_TO_MIDNIGHT.Minus(_bedTime) + (1.0/60.0));
+                    return 0;
 					break;
 			}
 		}	
@@ -146,6 +148,19 @@ namespace BabysitterKata
                     break;
                 default:
                     return (int)Math.Round(_endTime.Minus(MIDNIGHT));
+            }
+        }
+
+        private bool BabysitterWorksPastMidnight()
+        {
+            switch (_endTimePeriod)
+            {
+                case (TIME_PERIOD)0x1:
+                    return true;
+                    break;
+                default:
+                    return false;
+                    break;
             }
         }
 
