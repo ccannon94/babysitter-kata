@@ -43,8 +43,8 @@ namespace BabysitterKata
 
 		/// <summary>
 		/// The time that the child went to bed.
-		/// Valid Range: 17:00 - 04:00
-		/// Must fall between <see cref="StartTime"/> and <see cref="EndTime"/>
+		/// Valid Range: 17:00 - 23:59
+		/// Must fall between <see cref="StartTime"/> and <see cref="MIDNIGHT"/>
 		/// </summary>
 		public TwentyFourHourTime BedTime { get { return _bedTime; } }
 
