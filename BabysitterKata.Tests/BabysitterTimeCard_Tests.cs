@@ -10,7 +10,6 @@ namespace BabysitterKata.Tests
 {
 	class BabysitterTimeCard_Tests
 	{
-		[TestCase(0, 12, 0, 42)]
 		[TestCase(19, 15, 22, 32)]
 		[TestCase(20, 52, 03, 15)]
 		[TestCase(17, 00, 04, 00)]
