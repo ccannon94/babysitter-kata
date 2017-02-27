@@ -40,6 +40,9 @@ namespace BabysitterKata.Tests
 		}
 
         [TestCase(01, 15, 02, 30)]
+        [TestCase(02, 30, 04, 00)]
+        [TestCase(00, 01, 03, 30)]
+        [TestCase(03, 01, 03, 02)]
         public void BabysitterTimeCard_GivenStartTimeAfterMidnight_ThrowsArguementOutOfRangeException(int startTimeHours, int startTimeMinutes, int endTimeHours, int endTimeMinutes)
         {
             TwentyFourHourTime startTime = new TwentyFourHourTime(startTimeHours, startTimeMinutes);
