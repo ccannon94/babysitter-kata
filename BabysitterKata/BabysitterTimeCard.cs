@@ -30,7 +30,7 @@ namespace BabysitterKata
 
         /// <summary>
         /// The time the babysitting shift began.
-        /// Valid Range: 17:00 - 04:00
+        /// Valid Range: 17:00 - 23:59
         /// </summary>
         public TwentyFourHourTime StartTime { get { return _startTime; } }
 
