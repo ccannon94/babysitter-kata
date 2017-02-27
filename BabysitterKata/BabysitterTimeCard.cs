@@ -130,7 +130,7 @@ namespace BabysitterKata
 				default:
                     if(BabysitterWorksPastMidnight())
 					    return (int) Math.Round(ONE_MINUTE_TO_MIDNIGHT.Minus(_bedTime) + (1.0/60.0));
-                    return 0;
+                    return (int) Math.Round(_endTime.Minus(_bedTime));
 					break;
 			}
 		}	
