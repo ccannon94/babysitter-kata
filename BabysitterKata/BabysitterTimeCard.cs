@@ -30,7 +30,7 @@ namespace BabysitterKata
 
         /// <summary>
         /// The time the babysitting shift began.
-        /// Valid Range: 17:00 - 04:00
+        /// Valid Range: 17:00 - 23:59
         /// </summary>
         public TwentyFourHourTime StartTime { get { return _startTime; } }
 
@@ -43,8 +43,8 @@ namespace BabysitterKata
 
 		/// <summary>
 		/// The time that the child went to bed.
-		/// Valid Range: 17:00 - 04:00
-		/// Must fall between <see cref="StartTime"/> and <see cref="EndTime"/>
+		/// Valid Range: 17:00 - 23:59
+		/// Must fall between <see cref="StartTime"/> and <see cref="MIDNIGHT"/>
 		/// </summary>
 		public TwentyFourHourTime BedTime { get { return _bedTime; } }
 
@@ -128,7 +128,9 @@ namespace BabysitterKata
 					return 0;
 					break;
 				default:
-					return (int) Math.Round(ONE_MINUTE_TO_MIDNIGHT.Minus(_bedTime) + (1.0/60.0));
+                    if(BabysitterWorksPastMidnight())
+					    return (int) Math.Round(ONE_MINUTE_TO_MIDNIGHT.Minus(_bedTime) + (1.0/60.0));
+                    return (int) Math.Round(_endTime.Minus(_bedTime));
 					break;
 			}
 		}	
@@ -149,6 +151,19 @@ namespace BabysitterKata
             }
         }
 
+        private bool BabysitterWorksPastMidnight()
+        {
+            switch (_endTimePeriod)
+            {
+                case (TIME_PERIOD)0x1:
+                    return true;
+                    break;
+                default:
+                    return false;
+                    break;
+            }
+        }
+
         private int CalculateHoursBeforeBedtime_MorningStart()
         {
             return (int) Math.Round(_bedTime.Minus(_startTime));
@@ -163,9 +178,9 @@ namespace BabysitterKata
 
         private bool StartTimeIsValid(TwentyFourHourTime startTime)
         {
-            if (startTime.CompareTo(EARLIEST_START_TIME) >= 0 || startTime.CompareTo(LATEST_END_TIME) < 0)
+            if (startTime.CompareTo(EARLIEST_START_TIME) >= 0)
                 return true;
-            throw new ArgumentOutOfRangeException("Babysitter cannot start work before 5:00PM");
+            throw new ArgumentOutOfRangeException("Babysitter cannot start work before 5:00PM or after Midnight");
             return false;
         }
 

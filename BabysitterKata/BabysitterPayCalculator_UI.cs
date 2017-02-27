@@ -74,6 +74,8 @@ namespace BabysitterKata
 
         private TwentyFourHourTime InitializeAMTime(decimal hour, decimal minute)
         {
+            if (hour == 12)
+                hour = 0;
             return new TwentyFourHourTime((int)hour, (int)minute);
         }
 
@@ -82,7 +84,7 @@ namespace BabysitterKata
             int realHour = (int)hour + 12;
 
             if (realHour == 24)
-                realHour = 0;
+                realHour = 12;
 
             return new TwentyFourHourTime(realHour, (int)minute);
         }

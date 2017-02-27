@@ -10,7 +10,6 @@ namespace BabysitterKata.Tests
 {
 	class BabysitterTimeCard_Tests
 	{
-		[TestCase(0, 12, 0, 42)]
 		[TestCase(19, 15, 22, 32)]
 		[TestCase(20, 52, 03, 15)]
 		[TestCase(17, 00, 04, 00)]
@@ -39,6 +38,18 @@ namespace BabysitterKata.Tests
 			Assert.Throws<ArgumentOutOfRangeException>(delegate { new BabysitterTimeCard(startTime, endTime); });
 		}
 
+        [TestCase(01, 15, 02, 30)]
+        [TestCase(02, 30, 04, 00)]
+        [TestCase(00, 01, 03, 30)]
+        [TestCase(03, 01, 03, 02)]
+        public void BabysitterTimeCard_GivenStartTimeAfterMidnight_ThrowsArguementOutOfRangeException(int startTimeHours, int startTimeMinutes, int endTimeHours, int endTimeMinutes)
+        {
+            TwentyFourHourTime startTime = new TwentyFourHourTime(startTimeHours, startTimeMinutes);
+            TwentyFourHourTime endTime = new TwentyFourHourTime(endTimeHours, endTimeMinutes);
+
+            Assert.Throws<ArgumentOutOfRangeException>(delegate { new BabysitterTimeCard(startTime, endTime); });
+        }
+
 		[TestCase(17, 22, 06, 15)]
 		[TestCase(19, 45, 07, 36)]
 		[TestCase(22, 0, 4, 01)]
@@ -53,10 +64,10 @@ namespace BabysitterKata.Tests
 		}
 
 		[TestCase(17, 25, 17, 0)]
-		[TestCase(0, 43, 23, 42)]
 		[TestCase(22, 32, 19, 15)]
-		[TestCase(02, 15, 0, 0)]
-		[TestCase(03, 59, 0, 15)]
+        [TestCase(23, 39, 17, 15)]
+        [TestCase(19, 00, 18, 00)]
+        [TestCase(20, 00, 17, 00)]
 		public void BabySittertimeCard_GivenEndTimeBeforeStartTime_ThrowsArgumentException(int startTimeHours, int startTimeMinutes, int endTimeHours, int endTimeMinutes)
 		{
 			TwentyFourHourTime startTime = new TwentyFourHourTime(startTimeHours, startTimeMinutes);
@@ -117,9 +128,11 @@ namespace BabysitterKata.Tests
 		}
 
 		[TestCase(17, 16, 01, 05, 22, 00, 2)]
-        [TestCase(17, 00, 22, 45, 21, 16, 3)]
+        [TestCase(17, 00, 22, 45, 21, 16, 1)]
         [TestCase(18, 52, 23, 58, 22, 45, 1)]
         [TestCase(22, 15, 02, 30, 22, 30, 2)]
+        [TestCase(17, 52, 01, 40, 21, 30, 2)]
+        [TestCase(18, 12, 21, 32, 18, 52, 3)]
 		public void BabysitterTimeCard_GivenValidStartEndAndBedTime_ReturnHoursBetweenBedtimeAndMidnight(int startTimeHours, int startTimeMinutes, int endTimeHours, int endTimeMinutes, int bedTimeHours, int bedTimeMinutes, int hoursBetweenBedtimeAndMidnight)
 		{
             var timeCard = initializeTimeCard(startTimeHours, startTimeMinutes, endTimeHours, endTimeMinutes, bedTimeHours, bedTimeMinutes);
