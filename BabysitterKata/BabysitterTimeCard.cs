@@ -11,19 +11,14 @@ namespace BabysitterKata
     /// </summary>
     public class BabysitterTimeCard
     {
-        private enum TIME_PERIOD
-        {
-            EVENING = 0x00,
-            MORNING = 0x01
-        };
 
         private TwentyFourHourTime EARLIEST_START_TIME = new TwentyFourHourTime(17, 0);
         private TwentyFourHourTime LATEST_END_TIME = new TwentyFourHourTime(4, 0);
         private TwentyFourHourTime ONE_MINUTE_TO_MIDNIGHT = new TwentyFourHourTime(23, 59);
         private TwentyFourHourTime MIDNIGHT = new TwentyFourHourTime(0, 0);
-        private TIME_PERIOD _startTimePeriod;
-		private TIME_PERIOD _bedTimePeriod;
-        private TIME_PERIOD _endTimePeriod;
+        private TIME_OF_DAY _startTimePeriod;
+		private TIME_OF_DAY _bedTimePeriod;
+        private TIME_OF_DAY _endTimePeriod;
         private TwentyFourHourTime _startTime;
         private TwentyFourHourTime _endTime;
         private TwentyFourHourTime _bedTime;
@@ -107,7 +102,7 @@ namespace BabysitterKata
         {
             switch (_startTimePeriod)
             {
-                case (TIME_PERIOD)0x1:
+                case (TIME_OF_DAY)0x1:
                     return CalculateHoursBeforeBedtime_MorningStart();
                     break;
                 default:
@@ -124,7 +119,7 @@ namespace BabysitterKata
 		{
 			switch (_bedTimePeriod)
 			{
-				case (TIME_PERIOD)0x1:
+				case (TIME_OF_DAY)0x1:
 					return 0;
 					break;
 				default:
@@ -143,7 +138,7 @@ namespace BabysitterKata
         {
             switch (_endTimePeriod)
             {
-                case (TIME_PERIOD)0x0:
+                case (TIME_OF_DAY)0x0:
                     return 0;
                     break;
                 default:
@@ -155,7 +150,7 @@ namespace BabysitterKata
         {
             switch (_endTimePeriod)
             {
-                case (TIME_PERIOD)0x1:
+                case (TIME_OF_DAY)0x1:
                     return true;
                     break;
                 default:
@@ -248,25 +243,25 @@ namespace BabysitterKata
             
         }
 
-        private TIME_PERIOD EnumerateStartTimePeriod()
+        private TIME_OF_DAY EnumerateStartTimePeriod()
         {
             if (StartTime.CompareTo(EARLIEST_START_TIME) >= 0)
-                return TIME_PERIOD.EVENING;
-            return TIME_PERIOD.MORNING;
+                return TIME_OF_DAY.PM;
+            return TIME_OF_DAY.AM;
         }
 
-		private TIME_PERIOD EnumerateBedTimePeriod()
+		private TIME_OF_DAY EnumerateBedTimePeriod()
 		{
 			if (BedTime.CompareTo(EARLIEST_START_TIME) >= 0)
-				return TIME_PERIOD.EVENING;
-			return TIME_PERIOD.MORNING;
+				return TIME_OF_DAY.PM;
+			return TIME_OF_DAY.AM;
 		}
 
-        private TIME_PERIOD EnumerateEndTimePeriod()
+        private TIME_OF_DAY EnumerateEndTimePeriod()
         {
             if (EndTime.CompareTo(EARLIEST_START_TIME) >= 0)
-                return TIME_PERIOD.EVENING;
-            return TIME_PERIOD.MORNING;
+                return TIME_OF_DAY.PM;
+            return TIME_OF_DAY.AM;
         }
     }
 }
