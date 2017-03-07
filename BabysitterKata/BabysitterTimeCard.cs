@@ -53,7 +53,7 @@ namespace BabysitterKata
             if (StartTimeIsValid(startTime))
                 _startTime = startTime;
 
-            _startTimePeriod = EnumerateStartTimePeriod();
+            _startTimePeriod = enumerateStartTimePeriod();
 
             if (EndTimeIsValid(endTime))
                 _endTime = endTime;
@@ -70,17 +70,17 @@ namespace BabysitterKata
             if (StartTimeIsValid(startTime))
                 _startTime = startTime;
 
-            _startTimePeriod = EnumerateStartTimePeriod();
+            _startTimePeriod = enumerateStartTimePeriod();
 
             if (EndTimeIsValid(endTime))
                 _endTime = endTime;
 
-            _endTimePeriod = EnumerateEndTimePeriod();
+            _endTimePeriod = enumerateEndTimePeriod();
             
             if (bedTimeIsValid(bedTime))
                 _bedTime = bedTime;
 
-			_bedTimePeriod = EnumerateBedTimePeriod();
+			_bedTimePeriod = enumerateBedTimePeriod();
         }
 
         /// <summary>
@@ -243,21 +243,21 @@ namespace BabysitterKata
             
         }
 
-        private TIME_OF_DAY EnumerateStartTimePeriod()
+        private TIME_OF_DAY enumerateStartTimePeriod()
         {
             if (StartTime.CompareTo(EARLIEST_START_TIME) >= 0)
                 return TIME_OF_DAY.PM;
             return TIME_OF_DAY.AM;
         }
 
-		private TIME_OF_DAY EnumerateBedTimePeriod()
+		private TIME_OF_DAY enumerateBedTimePeriod()
 		{
 			if (BedTime.CompareTo(EARLIEST_START_TIME) >= 0)
 				return TIME_OF_DAY.PM;
 			return TIME_OF_DAY.AM;
 		}
 
-        private TIME_OF_DAY EnumerateEndTimePeriod()
+        private TIME_OF_DAY enumerateEndTimePeriod()
         {
             if (EndTime.CompareTo(EARLIEST_START_TIME) >= 0)
                 return TIME_OF_DAY.PM;
