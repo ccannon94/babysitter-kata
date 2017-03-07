@@ -11,19 +11,14 @@ namespace BabysitterKata
     /// </summary>
     public class BabysitterTimeCard
     {
-        private enum TIME_PERIOD
-        {
-            EVENING = 0x00,
-            MORNING = 0x01
-        };
 
         private TwentyFourHourTime EARLIEST_START_TIME = new TwentyFourHourTime(17, 0);
         private TwentyFourHourTime LATEST_END_TIME = new TwentyFourHourTime(4, 0);
         private TwentyFourHourTime ONE_MINUTE_TO_MIDNIGHT = new TwentyFourHourTime(23, 59);
         private TwentyFourHourTime MIDNIGHT = new TwentyFourHourTime(0, 0);
-        private TIME_PERIOD _startTimePeriod;
-		private TIME_PERIOD _bedTimePeriod;
-        private TIME_PERIOD _endTimePeriod;
+        private TIME_OF_DAY _startTimePeriod;
+		private TIME_OF_DAY _bedTimePeriod;
+        private TIME_OF_DAY _endTimePeriod;
         private TwentyFourHourTime _startTime;
         private TwentyFourHourTime _endTime;
         private TwentyFourHourTime _bedTime;
@@ -55,12 +50,12 @@ namespace BabysitterKata
         /// <param name="endTime">Time shift ended, valid range: 17:00 - 04:00, must come after <see cref="StartTime"/></param>
         public BabysitterTimeCard(TwentyFourHourTime startTime, TwentyFourHourTime endTime)
         {
-            if (StartTimeIsValid(startTime))
+            if (startTimeIsValid(startTime))
                 _startTime = startTime;
 
-            _startTimePeriod = EnumerateStartTimePeriod();
+            _startTimePeriod = enumerateStartTimePeriod();
 
-            if (EndTimeIsValid(endTime))
+            if (endTimeIsValid(endTime))
                 _endTime = endTime;
         }
 
@@ -72,20 +67,20 @@ namespace BabysitterKata
         /// <param name="bedTime">Time child went to bed, valid range: 17:00 - 04:00, must come between <see cref="StartTime"/> and <see cref="EndTime"/></param>
         public BabysitterTimeCard(TwentyFourHourTime startTime, TwentyFourHourTime endTime, TwentyFourHourTime bedTime)
         {
-            if (StartTimeIsValid(startTime))
+            if (startTimeIsValid(startTime))
                 _startTime = startTime;
 
-            _startTimePeriod = EnumerateStartTimePeriod();
+            _startTimePeriod = enumerateStartTimePeriod();
 
-            if (EndTimeIsValid(endTime))
+            if (endTimeIsValid(endTime))
                 _endTime = endTime;
 
-            _endTimePeriod = EnumerateEndTimePeriod();
+            _endTimePeriod = enumerateEndTimePeriod();
             
             if (bedTimeIsValid(bedTime))
                 _bedTime = bedTime;
 
-			_bedTimePeriod = EnumerateBedTimePeriod();
+			_bedTimePeriod = enumerateBedTimePeriod();
         }
 
         /// <summary>
@@ -107,11 +102,11 @@ namespace BabysitterKata
         {
             switch (_startTimePeriod)
             {
-                case (TIME_PERIOD)0x1:
-                    return CalculateHoursBeforeBedtime_MorningStart();
+                case TIME_OF_DAY.AM:
+                    return calculateHoursBeforeBedtime_MorningStart();
                     break;
                 default:
-                    return CalculateHoursBeforeBedtime_EveningStart();
+                    return calculateHoursBeforeBedtime_EveningStart();
                     break;
             }
         }
@@ -124,11 +119,11 @@ namespace BabysitterKata
 		{
 			switch (_bedTimePeriod)
 			{
-				case (TIME_PERIOD)0x1:
+				case TIME_OF_DAY.AM:
 					return 0;
 					break;
 				default:
-                    if(BabysitterWorksPastMidnight())
+                    if(babysitterWorksPastMidnight())
 					    return (int) Math.Round(ONE_MINUTE_TO_MIDNIGHT.Minus(_bedTime) + (1.0/60.0));
                     return (int) Math.Round(_endTime.Minus(_bedTime));
 					break;
@@ -143,7 +138,7 @@ namespace BabysitterKata
         {
             switch (_endTimePeriod)
             {
-                case (TIME_PERIOD)0x0:
+                case TIME_OF_DAY.PM:
                     return 0;
                     break;
                 default:
@@ -151,11 +146,11 @@ namespace BabysitterKata
             }
         }
 
-        private bool BabysitterWorksPastMidnight()
+        private bool babysitterWorksPastMidnight()
         {
             switch (_endTimePeriod)
             {
-                case (TIME_PERIOD)0x1:
+                case TIME_OF_DAY.AM:
                     return true;
                     break;
                 default:
@@ -164,19 +159,19 @@ namespace BabysitterKata
             }
         }
 
-        private int CalculateHoursBeforeBedtime_MorningStart()
+        private int calculateHoursBeforeBedtime_MorningStart()
         {
             return (int) Math.Round(_bedTime.Minus(_startTime));
         }
 
-        private int CalculateHoursBeforeBedtime_EveningStart()
+        private int calculateHoursBeforeBedtime_EveningStart()
         {
             if (_bedTime.CompareTo(EARLIEST_START_TIME) < 0)
                 return (int) Math.Round(ONE_MINUTE_TO_MIDNIGHT.Minus(_startTime) + _bedTime.Minus(MIDNIGHT));
             return (int) Math.Round(_bedTime.Minus(_startTime));
         }
 
-        private bool StartTimeIsValid(TwentyFourHourTime startTime)
+        private bool startTimeIsValid(TwentyFourHourTime startTime)
         {
             if (startTime.CompareTo(EARLIEST_START_TIME) >= 0)
                 return true;
@@ -184,19 +179,19 @@ namespace BabysitterKata
             return false;
         }
 
-        private bool EndTimeIsValid(TwentyFourHourTime endTime)
+        private bool endTimeIsValid(TwentyFourHourTime endTime)
         {
-            if ((endTime.CompareTo(EARLIEST_START_TIME) >= 0 || endTime.CompareTo(LATEST_END_TIME) <= 0) && StartTimePreceedsEndTime(endTime))
+            if ((endTime.CompareTo(EARLIEST_START_TIME) >= 0 || endTime.CompareTo(LATEST_END_TIME) <= 0) && startTimePreceedsEndTime(endTime))
                 return true;
             throw new ArgumentOutOfRangeException("Babysitters cannot work after 4:00AM");
             return false;
         }
 
-        private bool StartTimePreceedsEndTime(TwentyFourHourTime endTime)
+        private bool startTimePreceedsEndTime(TwentyFourHourTime endTime)
         {
-            switch ((int)_startTimePeriod)
+            switch (_startTimePeriod)
             {
-                case 0x01:
+                case TIME_OF_DAY.AM:
                     if (endTime.CompareTo(_startTime) >= 0 && endTime.CompareTo(LATEST_END_TIME) <=0)
                         return true;
                     throw new ArgumentException("End time must come after start time");
@@ -228,18 +223,16 @@ namespace BabysitterKata
 
         private bool bedTimePreceedsEndTime(TwentyFourHourTime bedTime)
         {
-            switch((int)_endTimePeriod)
+            switch(_endTimePeriod)
             {
-                case 0x01:
-                    if (bedTime.CompareTo(StartTime) >= 0)
-                        return true;
-                    if (bedTime.CompareTo(EndTime) <= 0)
+                case TIME_OF_DAY.PM:
+                    if (bedTime.CompareTo(StartTime) >= 0 && bedTime.CompareTo(EndTime) <= 0)
                         return true;
                     throw new ArgumentException("Bed time must come before end time");
                     return false;
                     break;
                 default:
-                    if (bedTime.CompareTo(EndTime) <= 0)
+                    if (bedTime.CompareTo(EndTime) <= 0 || bedTime.CompareTo(EARLIEST_START_TIME) >= 0)
                         return true;
                     throw new ArgumentException("Bed time must come before end time");
                     return false;
@@ -248,25 +241,25 @@ namespace BabysitterKata
             
         }
 
-        private TIME_PERIOD EnumerateStartTimePeriod()
+        private TIME_OF_DAY enumerateStartTimePeriod()
         {
             if (StartTime.CompareTo(EARLIEST_START_TIME) >= 0)
-                return TIME_PERIOD.EVENING;
-            return TIME_PERIOD.MORNING;
+                return TIME_OF_DAY.PM;
+            return TIME_OF_DAY.AM;
         }
 
-		private TIME_PERIOD EnumerateBedTimePeriod()
+		private TIME_OF_DAY enumerateBedTimePeriod()
 		{
 			if (BedTime.CompareTo(EARLIEST_START_TIME) >= 0)
-				return TIME_PERIOD.EVENING;
-			return TIME_PERIOD.MORNING;
+				return TIME_OF_DAY.PM;
+			return TIME_OF_DAY.AM;
 		}
 
-        private TIME_PERIOD EnumerateEndTimePeriod()
+        private TIME_OF_DAY enumerateEndTimePeriod()
         {
             if (EndTime.CompareTo(EARLIEST_START_TIME) >= 0)
-                return TIME_PERIOD.EVENING;
-            return TIME_PERIOD.MORNING;
+                return TIME_OF_DAY.PM;
+            return TIME_OF_DAY.AM;
         }
     }
 }
