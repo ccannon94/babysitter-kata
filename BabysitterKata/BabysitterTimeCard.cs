@@ -226,9 +226,7 @@ namespace BabysitterKata
             switch(_endTimePeriod)
             {
                 case TIME_OF_DAY.PM:
-                    if (bedTime.CompareTo(StartTime) >= 0)
-                        return true;
-                    if (bedTime.CompareTo(EndTime) <= 0)
+                    if (bedTime.CompareTo(StartTime) >= 0 && bedTime.CompareTo(EndTime) <= 0)
                         return true;
                     throw new ArgumentException("Bed time must come before end time");
                     return false;
