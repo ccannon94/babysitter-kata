@@ -50,12 +50,12 @@ namespace BabysitterKata
         /// <param name="endTime">Time shift ended, valid range: 17:00 - 04:00, must come after <see cref="StartTime"/></param>
         public BabysitterTimeCard(TwentyFourHourTime startTime, TwentyFourHourTime endTime)
         {
-            if (StartTimeIsValid(startTime))
+            if (startTimeIsValid(startTime))
                 _startTime = startTime;
 
             _startTimePeriod = enumerateStartTimePeriod();
 
-            if (EndTimeIsValid(endTime))
+            if (endTimeIsValid(endTime))
                 _endTime = endTime;
         }
 
@@ -67,12 +67,12 @@ namespace BabysitterKata
         /// <param name="bedTime">Time child went to bed, valid range: 17:00 - 04:00, must come between <see cref="StartTime"/> and <see cref="EndTime"/></param>
         public BabysitterTimeCard(TwentyFourHourTime startTime, TwentyFourHourTime endTime, TwentyFourHourTime bedTime)
         {
-            if (StartTimeIsValid(startTime))
+            if (startTimeIsValid(startTime))
                 _startTime = startTime;
 
             _startTimePeriod = enumerateStartTimePeriod();
 
-            if (EndTimeIsValid(endTime))
+            if (endTimeIsValid(endTime))
                 _endTime = endTime;
 
             _endTimePeriod = enumerateEndTimePeriod();
@@ -103,10 +103,10 @@ namespace BabysitterKata
             switch (_startTimePeriod)
             {
                 case TIME_OF_DAY.AM:
-                    return CalculateHoursBeforeBedtime_MorningStart();
+                    return calculateHoursBeforeBedtime_MorningStart();
                     break;
                 default:
-                    return CalculateHoursBeforeBedtime_EveningStart();
+                    return calculateHoursBeforeBedtime_EveningStart();
                     break;
             }
         }
@@ -123,7 +123,7 @@ namespace BabysitterKata
 					return 0;
 					break;
 				default:
-                    if(BabysitterWorksPastMidnight())
+                    if(babysitterWorksPastMidnight())
 					    return (int) Math.Round(ONE_MINUTE_TO_MIDNIGHT.Minus(_bedTime) + (1.0/60.0));
                     return (int) Math.Round(_endTime.Minus(_bedTime));
 					break;
@@ -146,7 +146,7 @@ namespace BabysitterKata
             }
         }
 
-        private bool BabysitterWorksPastMidnight()
+        private bool babysitterWorksPastMidnight()
         {
             switch (_endTimePeriod)
             {
@@ -159,19 +159,19 @@ namespace BabysitterKata
             }
         }
 
-        private int CalculateHoursBeforeBedtime_MorningStart()
+        private int calculateHoursBeforeBedtime_MorningStart()
         {
             return (int) Math.Round(_bedTime.Minus(_startTime));
         }
 
-        private int CalculateHoursBeforeBedtime_EveningStart()
+        private int calculateHoursBeforeBedtime_EveningStart()
         {
             if (_bedTime.CompareTo(EARLIEST_START_TIME) < 0)
                 return (int) Math.Round(ONE_MINUTE_TO_MIDNIGHT.Minus(_startTime) + _bedTime.Minus(MIDNIGHT));
             return (int) Math.Round(_bedTime.Minus(_startTime));
         }
 
-        private bool StartTimeIsValid(TwentyFourHourTime startTime)
+        private bool startTimeIsValid(TwentyFourHourTime startTime)
         {
             if (startTime.CompareTo(EARLIEST_START_TIME) >= 0)
                 return true;
@@ -179,15 +179,15 @@ namespace BabysitterKata
             return false;
         }
 
-        private bool EndTimeIsValid(TwentyFourHourTime endTime)
+        private bool endTimeIsValid(TwentyFourHourTime endTime)
         {
-            if ((endTime.CompareTo(EARLIEST_START_TIME) >= 0 || endTime.CompareTo(LATEST_END_TIME) <= 0) && StartTimePreceedsEndTime(endTime))
+            if ((endTime.CompareTo(EARLIEST_START_TIME) >= 0 || endTime.CompareTo(LATEST_END_TIME) <= 0) && startTimePreceedsEndTime(endTime))
                 return true;
             throw new ArgumentOutOfRangeException("Babysitters cannot work after 4:00AM");
             return false;
         }
 
-        private bool StartTimePreceedsEndTime(TwentyFourHourTime endTime)
+        private bool startTimePreceedsEndTime(TwentyFourHourTime endTime)
         {
             switch (_startTimePeriod)
             {
