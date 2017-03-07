@@ -234,7 +234,7 @@ namespace BabysitterKata
                     return false;
                     break;
                 default:
-                    if (bedTime.CompareTo(EndTime) <= 0)
+                    if (bedTime.CompareTo(EndTime) <= 0 || bedTime.CompareTo(EARLIEST_START_TIME) >= 0)
                         return true;
                     throw new ArgumentException("Bed time must come before end time");
                     return false;
