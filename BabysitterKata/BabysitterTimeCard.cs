@@ -102,7 +102,7 @@ namespace BabysitterKata
         {
             switch (_startTimePeriod)
             {
-                case (TIME_OF_DAY)0x1:
+                case TIME_OF_DAY.AM:
                     return CalculateHoursBeforeBedtime_MorningStart();
                     break;
                 default:
@@ -119,7 +119,7 @@ namespace BabysitterKata
 		{
 			switch (_bedTimePeriod)
 			{
-				case (TIME_OF_DAY)0x1:
+				case TIME_OF_DAY.AM:
 					return 0;
 					break;
 				default:
@@ -138,7 +138,7 @@ namespace BabysitterKata
         {
             switch (_endTimePeriod)
             {
-                case (TIME_OF_DAY)0x0:
+                case TIME_OF_DAY.PM:
                     return 0;
                     break;
                 default:
@@ -150,7 +150,7 @@ namespace BabysitterKata
         {
             switch (_endTimePeriod)
             {
-                case (TIME_OF_DAY)0x1:
+                case TIME_OF_DAY.AM:
                     return true;
                     break;
                 default:
@@ -189,9 +189,9 @@ namespace BabysitterKata
 
         private bool StartTimePreceedsEndTime(TwentyFourHourTime endTime)
         {
-            switch ((int)_startTimePeriod)
+            switch (_startTimePeriod)
             {
-                case 0x01:
+                case TIME_OF_DAY.AM:
                     if (endTime.CompareTo(_startTime) >= 0 && endTime.CompareTo(LATEST_END_TIME) <=0)
                         return true;
                     throw new ArgumentException("End time must come after start time");
@@ -223,9 +223,9 @@ namespace BabysitterKata
 
         private bool bedTimePreceedsEndTime(TwentyFourHourTime bedTime)
         {
-            switch((int)_endTimePeriod)
+            switch(_endTimePeriod)
             {
-                case 0x01:
+                case TIME_OF_DAY.PM:
                     if (bedTime.CompareTo(StartTime) >= 0)
                         return true;
                     if (bedTime.CompareTo(EndTime) <= 0)
