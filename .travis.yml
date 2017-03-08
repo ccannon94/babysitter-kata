@@ -2,10 +2,10 @@ language: csharp
 solution: BabysitterKata.sln
 install:
   - nuget restore BabysitterKata.sln
-  - nuget install NUnit.Runners -Version 3.4.1 -OutputDirectory testrunner
+  - nuget install NUnit.Console -OutputDirectory testrunner
 script:
   - xbuild /p:Configuration=Release BabysitterKata.sln
-  - mono ./testrunner/NUnit.Runners.3.4.1/tools/nunit-console.exe ./BabysitterKata.Tests/bin/Release/BabysitterKata.Tests.dll
+  - mono ./testrunner/NUnit.ConsoleRunner.3.6.1/tools/nunit-console.exe ./BabysitterKata.Tests/bin/Release/BabysitterKata.Tests.dll
 notifications:
   pushover:
     api_key: a73mazs43fmmwdardg4ahf3ppifj15
