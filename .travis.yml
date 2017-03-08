@@ -5,7 +5,7 @@ install:
   - nuget install NUnit.Console -OutputDirectory testrunner
 script:
   - xbuild /p:Configuration=Release BabysitterKata.sln
-  - mono ./testrunner/NUnit.ConsoleRunner.3.6.1/tools/nunit-console.exe ./BabysitterKata.Tests/bin/Release/BabysitterKata.Tests.dll
+  - mono ./packages/NUnit.ConsoleRunner.3.6.1/tools/nunit-console.exe ./BabysitterKata.Tests/bin/Release/BabysitterKata.Tests.dll
 notifications:
   pushover:
     api_key: a73mazs43fmmwdardg4ahf3ppifj15
