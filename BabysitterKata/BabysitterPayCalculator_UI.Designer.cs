@@ -212,9 +212,6 @@
         BabysitterKata.TIME_OF_DAY.AM,
         BabysitterKata.TIME_OF_DAY.PM};
             this.BedTime_AMPM_ComboBox.FormattingEnabled = true;
-            this.BedTime_AMPM_ComboBox.Items.AddRange(new object[] {
-            BabysitterKata.TIME_OF_DAY.AM,
-            BabysitterKata.TIME_OF_DAY.PM});
             this.BedTime_AMPM_ComboBox.Location = new System.Drawing.Point(309, 136);
             this.BedTime_AMPM_ComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.BedTime_AMPM_ComboBox.Name = "BedTime_AMPM_ComboBox";
@@ -227,9 +224,6 @@
         BabysitterKata.TIME_OF_DAY.AM,
         BabysitterKata.TIME_OF_DAY.PM};
             this.EndTime_AMPM_ComboBox.FormattingEnabled = true;
-            this.EndTime_AMPM_ComboBox.Items.AddRange(new object[] {
-            BabysitterKata.TIME_OF_DAY.AM,
-            BabysitterKata.TIME_OF_DAY.PM});
             this.EndTime_AMPM_ComboBox.Location = new System.Drawing.Point(309, 92);
             this.EndTime_AMPM_ComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.EndTime_AMPM_ComboBox.Name = "EndTime_AMPM_ComboBox";
@@ -242,9 +236,6 @@
         BabysitterKata.TIME_OF_DAY.AM,
         BabysitterKata.TIME_OF_DAY.PM};
             this.StartTime_AMPM_ComboBox.FormattingEnabled = true;
-            this.StartTime_AMPM_ComboBox.Items.AddRange(new object[] {
-            BabysitterKata.TIME_OF_DAY.AM,
-            BabysitterKata.TIME_OF_DAY.PM});
             this.StartTime_AMPM_ComboBox.Location = new System.Drawing.Point(309, 51);
             this.StartTime_AMPM_ComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.StartTime_AMPM_ComboBox.Name = "StartTime_AMPM_ComboBox";
