@@ -1,4 +1,4 @@
-language: csharp
+3language: csharp
 solution: BabysitterKata.sln
 install:
   - nuget restore BabysitterKata.sln
